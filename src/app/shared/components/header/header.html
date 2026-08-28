@@ -1,25 +1,19 @@
 <header class="header">
-
     <div class="header-container">
-
         <a routerLink="/products" class="logo">
             ShopSphere
         </a>
-
         <nav class="navigation">
             @for(item of navItems; track $index){
-            <a 
-                [routerLink]="item.route" 
-                routerLinkActive="active">
+            <a [routerLink]="item.route" routerLinkActive="active">
                 {{item?.label}}
             </a>
+            @if (item.label === 'Cart' && cartService.itemCount() > 0) {
+            <span class="cart-count"> {{ cartService.itemCount() }} </span> }
             }
         </nav>
-
         <a routerLink="/login" class="login-button">
             Login
         </a>
-
     </div>
-
 </header>

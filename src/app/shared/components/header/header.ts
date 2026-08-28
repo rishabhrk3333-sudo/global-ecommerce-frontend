@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { CartService } from '../../services /cart.service/cart-service';
 
 @Component({
   selector: 'app-header',
@@ -9,6 +10,8 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   styleUrl: './header.css',
 })
 export class Header {
+  readonly cartService = inject(CartService);
+
    navItems = [
     {
       label: 'Products',

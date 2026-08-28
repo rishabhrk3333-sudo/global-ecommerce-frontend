@@ -141,10 +141,7 @@
     color: var(--color-border-hover);
 }
 
-
-/* =========================================================
-   GLOBAL SELECT
-   ========================================================= */
+/* global select styling  */
 
 select {
     width: 100%;
@@ -175,7 +172,7 @@ select:focus {
     border-bottom-color: var(--color-primary);
 }
 
-/* //empty data css */
+/* empty data css */
 .no-products {
     width: 100%;
     height: calc(100vh - 100px);
