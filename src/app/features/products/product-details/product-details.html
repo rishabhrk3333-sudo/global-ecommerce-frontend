@@ -1,16 +1,11 @@
 <div class="product-details-page">
-
-  <button
-    type="button"
-    class="back-button"
-    (click)="goBack()"
-  >
-    ← Back to Products
-  </button>
-
-
+  <div class="page-header">
+     <button type="button" class="back-button" (click)="goBack()" > 
+      <span style="font-size: 20px;" >← </span>Back to Products
+    </button>
+  </div>
+ 
   @if (loading()) {
-
     <div class="product-state">
       <p>Loading product...</p>
     </div>

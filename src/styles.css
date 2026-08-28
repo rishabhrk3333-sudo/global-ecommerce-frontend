@@ -1,5 +1,8 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
 :root {
+    --font-family: 'Inter', sans-serif;
+
     /* Brand */
     --color-primary: #2563eb;
     --color-primary-hover: #1d4ed8;
@@ -36,6 +39,28 @@
     --spacing-lg: 1rem;
     --spacing-md: .8rem;
     --spacing-sm: .6rem;
+
+    .dark-theme {
+    --color-background: #111827;
+    --color-surface: #1f2937;
+    --color-text-primary: #f9fafb;
+    --color-text-secondary: #d1d5db;
+    --color-text-muted: #9ca3af;
+    --color-border: #374151;
+    --color-primary: #3b82f6;
+    --color-primary-hover: #60a5fa;
+
+}
+}
+
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-family);
+    background: var(--color-background);
+    color: var(--color-text-primary);
 }
 
 /* for all the pages */
@@ -55,12 +80,12 @@
 }
 
 .page-heading {
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 600;
 }
 
 .page-title {
-    font-size: 14px;
+    font-size: 12px;
 }
 
 /* global search css */

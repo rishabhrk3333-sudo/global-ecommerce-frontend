@@ -23,11 +23,8 @@ export class ProductDetails {
   private readonly cartService = inject(CartService);
 
   product = signal<Product | undefined>(undefined);
-
   quantity = signal(1);
-
   loading = signal(true);
-
   error = signal(false);
 
   ngOnInit(): void {
@@ -68,7 +65,6 @@ export class ProductDetails {
   }
 
   decreaseQuantity(): void {
-
     this.quantity.update(value =>
       Math.max(1, value - 1)
     );
@@ -91,5 +87,4 @@ export class ProductDetails {
   goBack(): void {
     this.router.navigate(['/products']);
   }
-
 }

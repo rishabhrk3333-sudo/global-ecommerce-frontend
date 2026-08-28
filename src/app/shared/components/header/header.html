@@ -12,6 +12,17 @@
             <span class="cart-count"> {{ cartService.itemCount() }} </span> }
             }
         </nav>
+        <button type="button" class="theme-toggle" (click)="themeService.toggleTheme()" [attr.aria-label]="
+        themeService.isDarkMode()
+            ? 'Switch to light mode'
+            : 'Switch to dark mode'
+    ">
+            @if (themeService.isDarkMode()) {
+            ☀
+            } @else {
+            ☾
+            }
+        </button>
         @if (authService.isLoggedIn()) {
         <button type="button" class="login-button" (click)="logout()">
             Logout

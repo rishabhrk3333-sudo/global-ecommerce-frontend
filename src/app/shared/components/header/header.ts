@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { CartService } from '../../services/cart.service/cart-service';
 import { AuthService } from '../../services/auth.service/auth';
+import { ThemeService } from '../../services/theme.service/theme';
 
 @Component({
   selector: 'app-header',
@@ -13,6 +14,7 @@ export class Header {
   readonly cartService = inject(CartService);
   authService = inject(AuthService);
   router = inject(Router);
+  themeService = inject(ThemeService);
 
    navItems = [
     {
