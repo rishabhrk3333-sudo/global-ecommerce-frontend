@@ -1,0 +1,102 @@
+[
+  {
+    "id": 1,
+    "name": "Wireless Headphones",
+    "description": "Premium wireless headphones with active noise cancellation and 30-hour battery life.",
+    "price": 4999,
+    "category": "Electronics",
+    "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e",
+    "stock": 25,
+    "rating": 4.5
+  },
+  {
+    "id": 2,
+    "name": "Smart Watch",
+    "description": "Smart watch with fitness tracking, heart rate monitoring and multiple sports modes.",
+    "price": 7999,
+    "category": "Electronics",
+    "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30",
+    "stock": 18,
+    "rating": 4.4
+  },
+  {
+    "id": 3,
+    "name": "Running Shoes",
+    "description": "Lightweight running shoes designed for comfort and everyday training.",
+    "price": 3499,
+    "category": "Footwear",
+    "image": "https://images.unsplash.com/photo-1542291026-7eec264c27ff",
+    "stock": 40,
+    "rating": 4.3
+  },
+  {
+    "id": 4,
+    "name": "Classic Denim Jacket",
+    "description": "Classic denim jacket with a comfortable fit for casual everyday wear.",
+    "price": 2499,
+    "category": "Fashion",
+    "image": "https://images.unsplash.com/photo-1551028719-00167b16eac5",
+    "stock": 30,
+    "rating": 4.2
+  },
+  {
+    "id": 5,
+    "name": "Leather Backpack",
+    "description": "Spacious leather backpack suitable for work, travel and everyday use.",
+    "price": 2999,
+    "category": "Bags",
+    "image": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62",
+    "stock": 22,
+    "rating": 4.6
+  },
+  {
+    "id": 6,
+    "name": "Mechanical Keyboard",
+    "description": "RGB mechanical keyboard with tactile switches and a compact design.",
+    "price": 5499,
+    "category": "Electronics",
+    "image": "https://images.unsplash.com/photo-1587829741301-dc798b83add3",
+    "stock": 15,
+    "rating": 4.7
+  },
+  {
+    "id": 7,
+    "name": "Cotton T-Shirt",
+    "description": "Soft and breathable 100% cotton t-shirt for everyday comfort.",
+    "price": 899,
+    "category": "Fashion",
+    "image": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab",
+    "stock": 75,
+    "rating": 4.1
+  },
+  {
+    "id": 8,
+    "name": "Portable Bluetooth Speaker",
+    "description": "Compact Bluetooth speaker with powerful sound and up to 12 hours of playback.",
+    "price": 1999,
+    "category": "Electronics",
+    "image": "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1",
+    "stock": 35,
+    "rating": 4.4
+  },
+  {
+    "id": 9,
+    "name": "Sunglasses",
+    "description": "UV-protected sunglasses with a lightweight frame and modern design.",
+    "price": 1599,
+    "category": "Fashion",
+    "image": "https://images.unsplash.com/photo-1511499767150-a48a237f0083",
+    "stock": 50,
+    "rating": 4.0
+  },
+  {
+    "id": 10,
+    "name": "Travel Water Bottle",
+    "description": "Insulated stainless steel water bottle that keeps drinks cold or hot for hours.",
+    "price": 1299,
+    "category": "Accessories",
+    "image": "https://images.unsplash.com/photo-1602143407151-7111542de6e8",
+    "stock": 45,
+    "rating": 4.5
+  }
+]

@@ -1,0 +1,40 @@
+[
+  {
+    "id": "ORD-1001",
+    "userId": 1,
+    "date": "2026-08-28",
+    "items": [
+      {
+        "productId": 1,
+        "productName": "Wireless Headphones",
+        "quantity": 1,
+        "price": 4999
+      }
+    ],
+    "subtotal": 4999,
+    "shipping": 100,
+    "total": 5099,
+    "paymentMethod": "STRIPE",
+    "paymentStatus": "SUCCESS",
+    "status": "SHIPPED"
+  },
+  {
+    "id": "ORD-1002",
+    "userId": 1,
+    "date": "2026-08-27",
+    "items": [
+      {
+        "productId": 2,
+        "productName": "Smart Watch",
+        "quantity": 1,
+        "price": 7999
+      }
+    ],
+    "subtotal": 7999,
+    "shipping": 0,
+    "total": 7999,
+    "paymentMethod": "PAYPAL",
+    "paymentStatus": "SUCCESS",
+    "status": "DELIVERED"
+  }
+]
