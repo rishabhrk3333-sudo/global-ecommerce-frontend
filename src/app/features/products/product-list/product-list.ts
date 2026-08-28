@@ -6,7 +6,7 @@ import {
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Product } from '../../../shared/models/product.model';
-import { ProductService } from '../../../shared/services /product.service/product';
+import { ProductService } from '../../../shared/services/product.service/product';
 
 
 @Component({

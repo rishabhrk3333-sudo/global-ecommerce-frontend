@@ -12,8 +12,16 @@
             <span class="cart-count"> {{ cartService.itemCount() }} </span> }
             }
         </nav>
+        @if (authService.isLoggedIn()) {
+        <button type="button" class="login-button" (click)="logout()">
+            Logout
+        </button>
+
+        } @else {
+
         <a routerLink="/login" class="login-button">
             Login
         </a>
+        }
     </div>
 </header>

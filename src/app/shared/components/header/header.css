@@ -78,6 +78,7 @@
     background: var(--color-text-primary);
     color: var(--color-surface);
     font-size: 14px;
+    cursor: pointer;
 }
 
 .app-content {

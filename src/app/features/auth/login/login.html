@@ -1,1 +1,106 @@
-<p>login works!</p>
+<section class="login-page">
+
+    <div class="login-card">
+
+        <div class="login-header">
+
+            <h1>Welcome Back</h1>
+
+            <p>
+                Sign in to continue shopping.
+            </p>
+
+        </div>
+
+
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+            <!-- Email -->
+
+            <div class="form-field">
+
+                <label for="email">
+                    Email
+                </label>
+
+                <input id="email" type="email" formControlName="email" placeholder="Enter your email" />
+
+                @if (isFieldInvalid('email')) {
+
+                <span class="error-message">
+
+                    @if (loginForm.controls.email.hasError('required')) {
+                    Email is required.
+                    }
+
+                    @if (loginForm.controls.email.hasError('email')) {
+                    Please enter a valid email.
+                    }
+
+                </span>
+
+                }
+
+            </div>
+
+
+            <!-- Password -->
+
+            <div class="form-field">
+
+                <label for="password">
+                    Password
+                </label>
+
+                <input id="password" type="password" formControlName="password" placeholder="Enter your password" />
+
+                @if (isFieldInvalid('password')) {
+
+                <span class="error-message">
+
+                    @if (loginForm.controls.password.hasError('required')) {
+                    Password is required.
+                    }
+
+                    @if (loginForm.controls.password.hasError('minlength')) {
+                    Password must be at least 6 characters.
+                    }
+
+                </span>
+
+                }
+
+            </div>
+
+
+            <!-- Login Error -->
+
+            @if (loginError) {
+
+            <div class="login-error">
+                {{ loginError }}
+            </div>
+
+            }
+
+
+            <button type="submit" class="login-submit">
+                Login
+            </button>
+
+        </form>
+
+
+        <div class="demo-credentials">
+
+            <p>Demo credentials</p>
+
+            <span>
+                user@example.com / password123
+            </span>
+
+        </div>
+
+    </div>
+
+</section>

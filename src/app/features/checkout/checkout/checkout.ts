@@ -5,7 +5,7 @@ import {
   Validators
 } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
-import { CartService } from '../../../shared/services /cart.service/cart-service';
+import { CartService } from '../../../shared/services/cart.service/cart-service';
 
 @Component({
   selector: 'app-checkout',

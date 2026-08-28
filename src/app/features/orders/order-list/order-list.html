@@ -1,1 +1,148 @@
-<p>order-list works!</p>
+<section class="orders-page">
+
+    <div class="page-header">
+
+        <div class="page-header-text">
+
+            <h1 class="page-heading">
+                My Orders
+            </h1>
+
+            <p class="page-title">
+                View and track your orders.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    @if (loading()) {
+
+    <div class="no-products">
+        <p>Loading orders...</p>
+    </div>
+
+    }
+
+    @else if (error()) {
+
+    <div class="no-products">
+
+        <span>
+            Unable to load orders
+        </span>
+
+        <p>
+            {{ error() }}
+        </p>
+
+    </div>
+
+    }
+
+    @else if (orders().length === 0) {
+
+    <div class="no-products">
+
+        <span>
+            No orders found
+        </span>
+
+        <p>
+            You haven't placed any orders yet.
+        </p>
+
+    </div>
+
+    }
+
+    @else {
+
+    <div class="orders-list">
+
+        @for (
+        order of orders();
+        track order.id
+        ) {
+
+        <article class="order-card">
+
+            <div class="order-header">
+
+                <div>
+
+                    <span class="order-label">
+                        Order
+                    </span>
+
+                    <h2>
+                        {{ order.id }}
+                    </h2>
+
+                </div>
+
+
+                <span class="order-status" [class]="
+                                'status-' +
+                                order.status.toLowerCase()
+                            ">
+                    {{ order.status }}
+                </span>
+
+            </div>
+
+
+            <div class="order-info">
+
+                <div>
+                    <span>Order Date</span>
+                    <strong>
+                        {{ order.date }}
+                    </strong>
+                </div>
+
+
+                <div>
+                    <span>Items</span>
+                    <strong>
+                        {{ order.items.length }}
+                    </strong>
+                </div>
+
+
+                <div>
+                    <span>Total</span>
+                    <strong>
+                        ₹{{ order.total }}
+                    </strong>
+                </div>
+
+            </div>
+
+
+            <div class="order-footer">
+
+                <span>
+                    Payment:
+                    {{ order.paymentStatus }}
+                </span>
+
+                <a [routerLink]="[
+                                '/orders',
+                                order.id
+                            ]">
+                    View Details
+                </a>
+
+            </div>
+
+        </article>
+
+        }
+
+    </div>
+
+    }
+
+</section>

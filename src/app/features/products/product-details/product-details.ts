@@ -7,8 +7,8 @@ import {
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 
 import { Product } from '../../../shared/models/product.model';
-import { ProductService } from '../../../shared/services /product.service/product';
-import { CartService } from '../../../shared/services /cart.service/cart-service';
+import { ProductService } from '../../../shared/services/product.service/product';
+import { CartService } from '../../../shared/services/cart.service/cart-service';
 
 @Component({
   selector: 'app-product-details',

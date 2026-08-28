@@ -2,7 +2,7 @@ import {
   Component,
   inject
 } from '@angular/core';
-import { CartService } from '../../../shared/services /cart.service/cart-service';
+import { CartService } from '../../../shared/services/cart.service/cart-service';
 import { Router } from '@angular/router';
 
 @Component({

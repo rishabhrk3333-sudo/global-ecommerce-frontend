@@ -1,9 +1,10 @@
 import { Routes } from '@angular/router';
+import { authGuard } from './shared/guards/auth.guard';
 
 export const routes: Routes = [
     {
         path: '',
-        redirectTo: 'Products',
+        redirectTo: 'products',
         pathMatch: 'full'
     },
     {
@@ -25,24 +26,25 @@ export const routes: Routes = [
     },
     {
         path: 'checkout',
+        canActivate: [authGuard],
         loadComponent: () => import('./features/checkout/checkout/checkout')
-                .then(m => m.Checkout)
+            .then(m => m.Checkout)
     },
 
     {
         path: 'orders',
+        canActivate: [authGuard],
         loadComponent: () =>
             import('./features/orders/order-list/order-list')
                 .then(m => m.OrderList)
     },
-
     {
         path: 'orders/:id',
+        canActivate: [authGuard],
         loadComponent: () =>
             import('./features/orders/order-details/order-details')
                 .then(m => m.OrderDetails)
     },
-
     {
         path: 'admin/dashboard',
         loadComponent: () =>
