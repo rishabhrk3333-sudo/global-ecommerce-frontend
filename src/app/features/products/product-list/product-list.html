@@ -18,7 +18,7 @@
                         placeholder="Search products...">
                 </div>
             </div>
-            
+
             <div class="filter-box">
                 <select (change)="onCategoryChange($event)">
                     @for (category of categories(); track category) {
@@ -92,7 +92,7 @@
     } @else {
 
     <div class="no-products">
-        <h2>No products found</h2>
+        <span>No products found</span>
         <p>Try changing your search or filter.</p>
     </div>
 

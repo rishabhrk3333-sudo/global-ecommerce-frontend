@@ -1,39 +1,25 @@
 <header class="header">
 
-  <div class="header-container">
+    <div class="header-container">
 
-    <a routerLink="/products" class="logo">
-      ShopSphere
-    </a>
+        <a routerLink="/products" class="logo">
+            ShopSphere
+        </a>
 
-    <nav class="navigation">
+        <nav class="navigation">
+            @for(item of navItems; track $index){
+            <a 
+                [routerLink]="item.route" 
+                routerLinkActive="active">
+                {{item?.label}}
+            </a>
+            }
+        </nav>
 
-      <a routerLink="/products"
-         routerLinkActive="active">
-        Products
-      </a>
+        <a routerLink="/login" class="login-button">
+            Login
+        </a>
 
-      <a routerLink="/orders"
-         routerLinkActive="active">
-        Orders
-      </a>
-
-      <a routerLink="/cart"
-         routerLinkActive="active">
-        Cart
-      </a>
-
-      <a routerLink="/admin/dashboard"
-         routerLinkActive="active">
-        Admin
-      </a>
-
-    </nav>
-
-    <a routerLink="/login" class="login-button">
-      Login
-    </a>
-
-  </div>
+    </div>
 
 </header>

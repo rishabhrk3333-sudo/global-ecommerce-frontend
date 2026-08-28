@@ -1,1 +1,119 @@
-<p>cart works!</p>
+<section class="cart-page">
+
+    <div class="page-header">
+        <div class="page-header-text">
+            <span class="page-heading">Your Cart</span>
+            <span class="page-title">Review your selected products</span>
+        </div>
+    </div>
+
+    @if (cartService.items().length > 0) {
+
+    <div class="cart-layout">
+
+        <div class="cart-items">
+
+            @for (item of cartService.items(); track item.product.id) {
+
+            <article class="cart-item">
+
+                <img [src]="item.product.image" [alt]="item.product.name" class="cart-item-image" />
+
+                <div class="cart-item-details">
+
+                    <h2>{{ item.product.name }}</h2>
+
+                    <p>
+                        ₹{{ item.product.price }}
+                    </p>
+
+                    <div class="quantity-control">
+
+                        <button type="button" (click)="decreaseQuantity(
+                    item.product.id,
+                    item.quantity
+                  )">
+                            −
+                        </button>
+
+                        <span>
+                            {{ item.quantity }}
+                        </span>
+
+                        <button type="button" (click)="increaseQuantity(
+                    item.product.id,
+                    item.quantity
+                  )">
+                            +
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <div class="cart-item-total">
+
+                    <strong>
+                        ₹{{ item.product.price * item.quantity }}
+                    </strong>
+
+                    <button type="button" class="remove-button" (click)="removeItem(item.product.id)">
+                        Remove
+                    </button>
+
+                </div>
+
+            </article>
+
+            }
+
+            <button type="button" class="clear-cart-button" (click)="clearCart()">
+                Clear Cart
+            </button>
+
+        </div>
+
+
+        <aside class="cart-summary">
+
+            <h2>Order Summary</h2>
+
+            <div class="summary-row">
+                <span>Items</span>
+                <span>{{ cartService.itemCount() }}</span>
+            </div>
+
+            <div class="summary-row">
+                <span>Subtotal</span>
+                <strong>
+                    ₹{{ cartService.subtotal() }}
+                </strong>
+            </div>
+
+            <button type="button" class="checkout-button" routerLink="/checkout">
+                Proceed to Checkout
+            </button>
+
+        </aside>
+
+    </div>
+
+    } @else {
+
+    <div class="empty-cart">
+
+        <h2>Your cart is empty</h2>
+
+        <p>
+            Add some products to your cart to continue.
+        </p>
+
+        <a routerLink="/products" class="primary-button">
+            Browse Products
+        </a>
+
+    </div>
+
+    }
+
+</section>
