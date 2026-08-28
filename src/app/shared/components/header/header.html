@@ -1,1 +1,39 @@
-<p>header works!</p>
+<header class="header">
+
+  <div class="header-container">
+
+    <a routerLink="/products" class="logo">
+      ShopSphere
+    </a>
+
+    <nav class="navigation">
+
+      <a routerLink="/products"
+         routerLinkActive="active">
+        Products
+      </a>
+
+      <a routerLink="/orders"
+         routerLinkActive="active">
+        Orders
+      </a>
+
+      <a routerLink="/cart"
+         routerLinkActive="active">
+        Cart
+      </a>
+
+      <a routerLink="/admin/dashboard"
+         routerLinkActive="active">
+        Admin
+      </a>
+
+    </nav>
+
+    <a routerLink="/login" class="login-button">
+      Login
+    </a>
+
+  </div>
+
+</header>

@@ -6,7 +6,7 @@ import { Product as ProductModel } from '../../models/product.model';
 @Injectable({
   providedIn: 'root',
 })
-export class Product {
+export class ProductService {
   private readonly http = inject(HttpClient);
 
   private readonly productsUrl = 'assets/data/products.json';
