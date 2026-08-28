@@ -13,7 +13,9 @@
     align-items: center;
     margin-bottom: var(--spacing-xl);
 }
-
+.search-container{
+    width: 50%;
+}
 
 .orders-list {
     display: flex;
