@@ -2,20 +2,18 @@ import {
   Component,
   inject
 } from '@angular/core';
-
-import { RouterLink } from '@angular/router';
 import { CartService } from '../../../shared/services /cart.service/cart-service';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
-  imports: [],
   templateUrl: './cart.html',
   styleUrl: './cart.css'
 })
 export class Cart {
 
   readonly cartService = inject(CartService);
+   private router = inject(Router);
 
   increaseQuantity(
     productId: number,
@@ -45,5 +43,9 @@ export class Cart {
 
   clearCart(): void {
     this.cartService.clearCart();
+  }
+
+  navigateToCheckout(){
+    this.router.navigate(['/checkout']);
   }
 }
