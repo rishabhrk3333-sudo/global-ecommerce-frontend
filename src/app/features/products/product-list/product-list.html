@@ -1,101 +1,93 @@
 <section class="products-page">
-    <div class="page-header">
-        <div class="page-header-text">
-            <span class="page-heading">Products</span>
-            <span class="page-title">Explore our latest products.</span>
-        </div>
-        <div class="product-controls">
-            <div class="search-container">
-                <div class=" search-box">
-                    <span class="search-box-icon">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <circle cx="11" cy="11" r="8" />
-                            <line x1="21" y1="21" x2="16.65" y2="16.65" />
-                        </svg>
-                    </span>
-                    <input type="search" class="search-box-input" (input)="onSearch($event)"
-                        placeholder="Search products...">
-                </div>
-            </div>
-
-            <div class="filter-box">
-                <select (change)="onCategoryChange($event)">
-                    @for (category of categories(); track category) {
-                    <option [value]="category">
-                        {{ category }}
-                    </option>
-                    }
-                </select>
-            </div>
-
-            <div class="sort-box">
-                <select (change)="onSortChange($event)">
-                    <option value="default">Sort by</option>
-                    <option value="price-low">Price: Low to High</option>
-                    <option value="price-high">Price: High to Low</option>
-                    <option value="rating">Highest Rated</option>
-                </select>
-            </div>
-
-        </div>
+  <div class="page-header">
+    <div class="page-header-text">
+      <span class="page-heading">Products</span>
+      <span class="page-title">Explore our latest products.</span>
     </div>
+    <div class="product-controls">
+      <div class="search-container">
+        <div class="search-box">
+          <span class="search-box-icon">
+            <!-- svg for search icon -->
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <circle cx="11" cy="11" r="8" />
+              <line x1="21" y1="21" x2="16.65" y2="16.65" />
+            </svg>
+          </span>
+          <input
+            type="search"
+            class="search-box-input"
+            (input)="onSearch($event)"
+            placeholder="Search products..."
+          />
+        </div>
+      </div>
 
+      <div class="filter-box">
+        <select (change)="onCategoryChange($event)">
+          @for (category of categories(); track category) {
+            <option [value]="category">
+              {{ category }}
+            </option>
+          }
+        </select>
+      </div>
 
+      <div class="sort-box">
+        <select (change)="onSortChange($event)">
+          <option value="default">Sort by</option>
+          <option value="price-low">Price: Low to High</option>
+          <option value="price-high">Price: High to Low</option>
+          <option value="rating">Highest Rated</option>
+        </select>
+      </div>
+    </div>
+  </div>
 
-    @if (filteredProducts().length > 0) {
-
+  @if (filteredProducts().length > 0) {
     <div class="products-grid">
-
-        @for (product of filteredProducts(); track product.id) {
-
-        <article class="product-card">
-
-            <img [src]="product.image" [alt]="product.name" class="product-image" />
-
-            <div class="product-content">
-
-                <span class="product-category">
-                    {{ product.category }}
-                </span>
-
-                <h2>{{ product.name }}</h2>
-
-                <p class="product-description">
-                    {{ product.description }}
-                </p>
-
-                <div class="product-footer">
-
-                    <span class="product-price">
-                        ₹{{ product.price }}
-                    </span>
-
-                    <span class="product-rating">
-                        ★ {{ product.rating }}
-                    </span>
-
-                </div>
-
-                <a [routerLink]="['/products', product.id]" class="view-product">
-                    View Details
-                </a>
-
+      @for (product of filteredProducts(); track product.id) {
+        <div class="product-card">
+          <img [src]="product.image" [alt]="product.name" class="product-image" />
+          <div class="product-content">
+            <span class="product-category">
+              {{ product.category }}
+            </span>
+            <h2>{{ product.name }}</h2>
+            <p class="product-description">
+              {{ product.description }}
+            </p>
+            <div class="product-footer">
+              <span class="product-price"> ₹{{ product.price }} </span>
+              <div class="product-rating">
+                <span class="star">★</span>
+                <span class="rating-value">{{ product.rating }}</span>
+              </div>
             </div>
-
-        </article>
-
-        }
-
+            <a [routerLink]="['/products', product.id]" class="view-product">
+              View Details
+              <svg
+                class="arrow"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      }
     </div>
-
-    } @else {
-
-    <div class="no-products">
-        <span>No products found</span>
-        <p>Try changing your search or filter.</p>
-    </div>
-
-    }
-
+  } @else {
+    <app-empty-state></app-empty-state>
+  }
 </section>

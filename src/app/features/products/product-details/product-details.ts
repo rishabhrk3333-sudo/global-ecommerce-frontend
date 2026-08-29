@@ -1,8 +1,4 @@
-import {
-  Component,
-  inject,
-  signal
-} from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 
@@ -14,7 +10,7 @@ import { CartService } from '../../../shared/services/cart.service/cart-service'
   selector: 'app-product-details',
   imports: [],
   templateUrl: './product-details.html',
-  styleUrl: './product-details.css'
+  styleUrl: './product-details.css',
 })
 export class ProductDetails {
   private readonly productService = inject(ProductService);
@@ -32,7 +28,6 @@ export class ProductDetails {
   }
 
   private loadProduct(): void {
-
     const id = Number(this.route.snapshot.paramMap.get('id'));
 
     if (!id) {
@@ -56,18 +51,16 @@ export class ProductDetails {
 
         this.loading.set(false);
         this.error.set(true);
-      }
+      },
     });
   }
 
   increaseQuantity(): void {
-    this.quantity.update(value => value + 1);
+    this.quantity.update((value) => value + 1);
   }
 
   decreaseQuantity(): void {
-    this.quantity.update(value =>
-      Math.max(1, value - 1)
-    );
+    this.quantity.update((value) => Math.max(1, value - 1));
   }
 
   //method to add product into cart by using cart service
@@ -76,13 +69,9 @@ export class ProductDetails {
     if (!selectedProduct) {
       return;
     }
-    this.cartService.addToCart(
-      selectedProduct,
-      this.quantity()
-    );
-    console.log('Product added to cart');
+    this.cartService.addToCart(selectedProduct, this.quantity());
+    // console.log('Product added to cart');
   }
-
 
   goBack(): void {
     this.router.navigate(['/products']);

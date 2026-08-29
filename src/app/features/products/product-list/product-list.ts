@@ -1,19 +1,14 @@
-import {
-  Component,
-  computed,
-  inject,
-  signal
-} from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Product } from '../../../shared/models/product.model';
 import { ProductService } from '../../../shared/services/product.service/product';
-
+import { EmptyState } from '../../../shared/components/empty-state/empty-state';
 
 @Component({
   selector: 'app-product-list',
-  imports: [RouterLink],
+  imports: [RouterLink, EmptyState],
   templateUrl: './product-list.html',
-  styleUrl: './product-list.css'
+  styleUrl: './product-list.css',
 })
 export class ProductList {
   private readonly productService = inject(ProductService);
@@ -25,9 +20,7 @@ export class ProductList {
 
   // Generate categories from products
   categories = computed(() => {
-    const categories = this.products().map(
-      product => product.category
-    );
+    const categories = this.products().map((product) => product.category);
     return ['All', ...new Set(categories)];
   });
 
@@ -37,9 +30,10 @@ export class ProductList {
     // Search
     const search = this.searchTerm().trim().toLowerCase();
     if (search) {
-      result = result.filter(product =>
-        product.name.toLowerCase().includes(search) ||
-        product.description.toLowerCase().includes(search)
+      result = result.filter(
+        (product) =>
+          product.name.toLowerCase().includes(search) ||
+          product.description.toLowerCase().includes(search),
       );
     }
 
@@ -47,14 +41,11 @@ export class ProductList {
     const category = this.selectedCategory();
 
     if (category !== 'All') {
-      result = result.filter(
-        product => product.category === category
-      );
+      result = result.filter((product) => product.category === category);
     }
 
     // Sorting
     switch (this.selectedSort()) {
-
       case 'price-low':
         result.sort((a, b) => a.price - b.price);
         break;
@@ -84,11 +75,8 @@ export class ProductList {
         this.products.set(products);
       },
       error: (error: unknown) => {
-        console.error(
-          'Failed to load products:',
-          error
-        );
-      }
+        console.error('Failed to load products:', error);
+      },
     });
   }
 
@@ -98,7 +86,6 @@ export class ProductList {
   onSearch(event: Event): void {
     const input = event.target as HTMLInputElement;
     this.searchTerm.set(input.value);
-
   }
 
   /**
@@ -107,7 +94,6 @@ export class ProductList {
   onCategoryChange(event: Event): void {
     const select = event.target as HTMLSelectElement;
     this.selectedCategory.set(select.value);
-
   }
 
   /**
@@ -118,4 +104,3 @@ export class ProductList {
     this.selectedSort.set(select.value);
   }
 }
-

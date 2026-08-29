@@ -1,46 +1,71 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 :root {
-    --font-family: 'Inter', sans-serif;
+  --font-family: 'Inter', sans-serif;
 
-    /* Brand */
-    --color-primary: #2563eb;
-    --color-primary-hover: #1d4ed8;
+  /* Brand */
+  --color-primary: #2563eb;
+  --color-primary-hover: #1d4ed8;
 
-    /* Background */
-    --color-background: #f8fafc;
-    --color-surface: #ffffff;
+  /* Background */
+  --color-background: #f8fafc;
+  --color-surface: #ffffff;
 
-    /* Text */
-    --color-text-primary: #111827;
-    --color-text-secondary: #6b7280;
-    --color-text-muted: #9ca3af;
+  /* Text */
+  --color-text-primary: #111827;
+  --color-text-secondary: #6b7280;
+  --color-text-muted: #9ca3af;
 
-    /* Border */
-    --color-border: #e5e7eb;
-    --color-border-hover: #cbd5e1;
+  /* Border */
+  --color-border: #e5e7eb;
+  --color-border-hover: #cbd5e1;
 
-    /* Status */
-    --color-success: #16a34a;
-    --color-warning: #f59e0b;
-    --color-danger: #dc2626;
-    --color-info: #0284c7;
+  /* Status */
+  --color-success: #16a34a;
+  --color-warning: #f59e0b;
+  --color-danger: #dc2626;
+  --color-info: #0284c7;
 
-    /* Common */
-    --border-radius-sm: 6px;
-    --border-radius-md: 8px;
-    --border-radius-lg: 12px;
+  /* Common */
+  --border-radius-sm: 6px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 12px;
 
-    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
-    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.08);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.08);
 
-    /* Layout */
-    --max-width: 1200px;
-    --spacing-lg: 1rem;
-    --spacing-md: .8rem;
-    --spacing-sm: .6rem;
+  /* Primary Button */
+  --btn-primary-bg: #2563eb;
+  --btn-primary-text: #ffffff;
+  --btn-primary-hover: #1d4ed8;
+  --btn-primary-active: #1e40af;
 
-    .dark-theme {
+  /* Secondary Button */
+  --btn-secondary-bg: #f1f5f9;
+  --btn-secondary-text: #0f172a;
+  --btn-secondary-hover: #e2e8f0;
+  --btn-secondary-active: #cbd5e1;
+  --btn-secondary-border: #cbd5e1;
+
+  /* tertiary Button */
+  --btn-tertiary-text: var(--color-text-primary);
+  --btn-tertiary-hover-text: var(--color-primary);
+
+  /* Common Button Settings */
+  --btn-padding-y: 0.625rem; /* 10px */
+  --btn-padding-x: 1.25rem; /* 20px */
+  --btn-font-size: 0.875rem; /* 14px */
+  --btn-font-weight: 600;
+  --btn-radius: 8px;
+  --btn-transition: all 0.2s ease-in-out;
+
+  /* Layout */
+  --max-width: 1200px;
+  --spacing-lg: 1rem;
+  --spacing-md: 0.8rem;
+  --spacing-sm: 0.6rem;
+
+  .dark-theme {
     --color-background: #111827;
     --color-surface: #1f2937;
     --color-text-primary: #f9fafb;
@@ -50,170 +75,277 @@
     --color-primary: #3b82f6;
     --color-primary-hover: #60a5fa;
 
-}
-}
+    /* Dark Mode Primary Button */
+    --btn-primary-bg: #3b82f6;
+    --btn-primary-text: #ffffff;
+    --btn-primary-hover: #60a5fa;
+    --btn-primary-active: #2563eb;
 
+    /* Dark Mode Secondary Button */
+    --btn-secondary-bg: #374151;
+    --btn-secondary-text: #f9fafb;
+    --btn-secondary-hover: #4b5563;
+    --btn-secondary-active: #1f2937;
+    --btn-secondary-border: #4b5563;
+
+    /* Dark Mode Tertiary Overrides */
+    --btn-tertiary-text: var(--color-text-primary);
+    --btn-tertiary-hover-text: var(--color-primary);
+  }
+}
 
 html,
 body {
-    margin: 0;
-    padding: 0;
-    font-family: var(--font-family);
-    background: var(--color-background);
-    color: var(--color-text-primary);
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family);
+  background: var(--color-background);
+  color: var(--color-text-primary);
 }
 
 /* for all the pages */
 .page-header {
-    width: 100%;
-    height: 5%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    margin: 10px 0px;
+  width: 100%;
+  height: 5%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0px;
 }
 
 .page-header-text {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .page-heading {
-    font-size: 18px;
-    font-weight: 600;
+  font-size: 18px;
+  font-weight: 600;
 }
 
 .page-title {
-    font-size: 12px;
+  font-size: 12px;
 }
 
 /* global search css */
 .search-box {
-    position: relative;
-    display: flex;
-    align-items: center;
+  position: relative;
+  display: flex;
+  align-items: center;
 
-    width: 100%;
-    max-width: 100%;
+  width: 100%;
+  max-width: 100%;
 
-    background: var(--color-surface);
+  background: var(--color-surface);
 
-    border: none;
-    border-bottom: 1px solid var(--color-border);
+  border: none;
+  border-bottom: 1px solid var(--color-border);
 
-    transition: border-color 0.3s ease;
+  transition: border-color 0.3s ease;
 }
 
 .search-box:hover {
-    border-bottom-color: var(--color-border-hover);
+  border-bottom-color: var(--color-border-hover);
 }
 
 .search-box:focus-within {
-    border-bottom-color: var(--color-primary);
+  border-bottom-color: var(--color-primary);
 }
-
 
 /* Search Icon */
 
 .search-box-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-    padding: 12px 0 12px 16px;
+  padding: 12px 0 12px 16px;
 
-    color: var(--color-text-muted);
+  color: var(--color-text-muted);
 
-    transition: color 0.3s ease;
+  transition: color 0.3s ease;
 
-    flex-shrink: 0;
+  flex-shrink: 0;
 }
 
 .search-box:hover .search-box-icon,
 .search-box:focus-within .search-box-icon {
-    color: var(--color-primary);
+  color: var(--color-primary);
 }
-
 
 /* Search Input */
 
 .search-box-input {
-    flex: 1;
+  flex: 1;
 
-    width: 100%;
-    min-width: 0;
+  width: 100%;
+  min-width: 0;
 
-    padding: 12px 16px 12px 12px;
+  padding: 12px 16px 12px 12px;
 
-    border: none;
-    outline: none;
+  border: none;
+  outline: none;
 
-    background: transparent;
+  background: transparent;
 
-    color: var(--color-text-primary);
+  color: var(--color-text-primary);
 
-    font-size: 15px;
+  font-size: 15px;
 
-    transition: color 0.3s ease;
+  transition: color 0.3s ease;
 }
 
 .search-box-input::placeholder {
-    color: var(--color-text-muted);
-    font-size: 14px;
+  color: var(--color-text-muted);
+  font-size: 14px;
 }
 
 .search-box-input:focus::placeholder {
-    color: var(--color-border-hover);
+  color: var(--color-border-hover);
 }
 
 /* global select styling  */
 
 select {
-    width: 100%;
+  width: 100%;
 
-    padding: 10px 4px;
+  padding: 10px 4px;
 
-    border: none;
-    border-bottom: 1px solid var(--color-border);
+  border: none;
+  border-bottom: 1px solid var(--color-border);
 
-    background: transparent;
+  background: transparent;
 
-    color: var(--color-text-primary);
+  color: var(--color-text-primary);
 
-    outline: none;
+  outline: none;
 
-    cursor: pointer;
+  cursor: pointer;
 
-    border-radius: 0;
+  border-radius: 0;
 
-    transition: border-color 0.3s ease;
+  transition: border-color 0.3s ease;
 }
 
 select:hover {
-    border-bottom-color: var(--color-border-hover);
+  border-bottom-color: var(--color-border-hover);
 }
 
 select:focus {
-    border-bottom-color: var(--color-primary);
+  border-bottom-color: var(--color-primary);
 }
 
-/* empty data css */
-.no-products {
-    width: 100%;
-    height: calc(100vh - 100px);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: var(--color-text-secondary);
+/* tooltip css */
+.has-tooltip {
+  position: relative;
+  cursor: pointer;
 }
 
-.no-products span {
-    font-size: 20px;
-    font-weight: 800;
+/* Base Button Styles */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: var(--btn-padding-y) var(--btn-padding-x);
+  font-family: var(--font-family);
+  font-size: var(--btn-font-size);
+  font-weight: var(--btn-font-weight);
+  border-radius: var(--btn-radius);
+  border: 1px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  transition: var(--btn-transition);
+  outline: none;
 }
 
-.no-products p {
-    font-size: 14px;
+/* Disabled State */
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Primary Button */
+.btn-primary {
+  background-color: var(--btn-primary-bg);
+  color: var(--btn-primary-text);
+}
+
+.btn-primary:hover:not(:disabled) {
+  background-color: var(--btn-primary-hover);
+}
+
+.btn-primary:active:not(:disabled) {
+  background-color: var(--btn-primary-active);
+}
+
+/* Secondary Button */
+.btn-secondary {
+  background-color: var(--btn-secondary-bg);
+  color: var(--btn-secondary-text);
+  border-color: var(--btn-secondary-border);
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background-color: var(--btn-secondary-hover);
+}
+
+.btn-secondary:active:not(:disabled) {
+  background-color: var(--btn-secondary-active);
+}
+
+/* Tertiary / Link Button (Transparent, no border, text underlines/bolds on hover) */
+.btn-tertiary {
+  background-color: transparent;
+  border-color: transparent;
+  color: var(--btn-tertiary-text);
+  padding: var(--btn-padding-y) 8px;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.btn-tertiary:hover:not(:disabled) {
+  color: var(--btn-tertiary-hover-text);
+  font-weight: 700;
+  text-decoration: underline;
+  background-color: transparent;
+}
+
+/* Modern Back Button */
+.back-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 1.5rem;
+  padding: 8px 14px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-md, 8px);
+  background: var(--color-surface);
+  color: var(--color-text-secondary);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.back-icon {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.2s ease;
+}
+
+.back-button:hover {
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+  background-color: rgba(37, 99, 235, 0.04);
+}
+
+.back-button:hover .back-icon {
+  transform: translateX(-3px);
+}
+
+.btn-tertiary:active:not(:disabled) {
+  opacity: 0.8;
 }

@@ -1,198 +1,125 @@
 <section class="orders-page">
-
-    <div class="page-header">
-        <div class="page-header-text">
-            <h1 class="page-heading">
-                My Orders
-            </h1>
-            <p class="page-title">
-                View and track your orders.
-            </p>
+  <div class="page-header">
+    <div class="page-header-text">
+      <span class="page-heading"> My Orders </span>
+      <span class="page-title"> View and track your orders. </span>
+    </div>
+    <div class="order-controls">
+      <div class="search-container">
+        <div class="search-box">
+          <span class="search-box-icon">
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <circle cx="11" cy="11" r="8" />
+              <line x1="21" y1="21" x2="16.65" y2="16.65" />
+            </svg>
+          </span>
+          <input
+            class="search-box-input"
+            type="search"
+            placeholder="Search by order ID..."
+            [value]="searchTerm()"
+            (input)="onSearch($event)"
+          />
         </div>
-        <div class="order-controls">
-            <div class="search-container">
-                <div class=" search-box">
-                    <span class="search-box-icon">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <circle cx="11" cy="11" r="8" />
-                            <line x1="21" y1="21" x2="16.65" y2="16.65" />
-                        </svg>
-                    </span>
-                    <input class="search-box-input" type="text" placeholder="Search by order ID..."
-                        [value]="searchTerm()" (input)="onSearch($event)" />
-                </div>
-            </div>
-            <select [value]="statusFilter()" (change)="onStatusChange($event)">
-                <option value="ALL">
-                    All Status
-                </option>
-                <option value="PLACED">
-                    Placed
-                </option>
-                <option value="PROCESSING">
-                    Processing
-                </option>
-                <option value="SHIPPED">
-                    Shipped
-                </option>
-                <option value="DELIVERED">
-                    Delivered
-                </option>
-                <option value="CANCELLED">
-                    Cancelled
-                </option>
-            </select>
+      </div>
+      <div class="filter-box">
+        <select [value]="statusFilter()" (change)="onStatusChange($event)">
+          <option value="ALL">All Status</option>
+          <option value="PLACED">Placed</option>
+          <option value="PROCESSING">Processing</option>
+          <option value="SHIPPED">Shipped</option>
+          <option value="DELIVERED">Delivered</option>
+          <option value="CANCELLED">Cancelled</option>
+        </select>
+      </div>
 
+      <div class="sort-box">
+        <select [value]="sortOption()" (change)="onSortChange($event)">
+          <option value="newest">Newest First</option>
+          <option value="oldest">Oldest First</option>
+        </select>
+      </div>
 
-            <select [value]="sortOption()" (change)="onSortChange($event)">
-
-                <option value="newest">
-                    Newest First
-                </option>
-
-                <option value="oldest">
-                    Oldest First
-                </option>
-
-            </select>
-
-
-            <button type="button" (click)="clearFilters()">
-                Clear
-            </button>
-
-        </div>
-
+      @if (hasActiveFilters()) {
+        <button class="btn btn-tertiary" type="button" (click)="clearFilters()">Clear</button>
+      }
     </div>
+  </div>
 
-
-    @if (loading()) {
-
+  @if (loading()) {
     <div class="no-products">
-        <p>Loading orders...</p>
+      <p>Loading orders...</p>
     </div>
-
-    }
-
-    @else if (error()) {
-
+  } @else if (error()) {
     <div class="no-products">
+      <span> Unable to load orders </span>
 
-        <span>
-            Unable to load orders
-        </span>
-
-        <p>
-            {{ error() }}
-        </p>
-
+      <p>
+        {{ error() }}
+      </p>
     </div>
-
-    }
-
-    @else if (orders().length === 0) {
-
+  } @else if (orders().length === 0) {
     <div class="no-products">
+      <span> No orders found </span>
 
-        <span>
-            No orders found
-        </span>
-
-        <p>
-            You haven't placed any orders yet.
-        </p>
-
+      <p>You haven't placed any orders yet.</p>
     </div>
-
-    }
-
-    @else {
-
+  } @else {
     <div class="orders-list">
-
-        @for (
-        order of filteredOrders();
-        track order.id
-        ) {
-
+      @for (order of filteredOrders(); track order.id) {
         <article class="order-card">
+          <div class="order-header">
+            <div>
+              <span class="order-label"> Order </span>
 
-            <div class="order-header">
-
-                <div>
-
-                    <span class="order-label">
-                        Order
-                    </span>
-
-                    <h2>
-                        {{ order.id }}
-                    </h2>
-
-                </div>
-
-
-                <span class="order-status" [class]="
-                                'status-' +
-                                order.status.toLowerCase()
-                            ">
-                    {{ order.status }}
-                </span>
-
+              <h2>
+                {{ order.id }}
+              </h2>
             </div>
 
+            <span class="order-status" [class]="'status-' + order.status.toLowerCase()">
+              {{ order.status }}
+            </span>
+          </div>
 
-            <div class="order-info">
-
-                <div>
-                    <span>Order Date</span>
-                    <strong>
-                        {{ order.date }}
-                    </strong>
-                </div>
-
-
-                <div>
-                    <span>Items</span>
-                    <strong>
-                        {{ order.items.length }}
-                    </strong>
-                </div>
-
-
-                <div>
-                    <span>Total</span>
-                    <strong>
-                        ₹{{ order.total }}
-                    </strong>
-                </div>
-
+          <div class="order-info">
+            <div>
+              <span>Order Date</span>
+              <strong>
+                {{ order.date }}
+              </strong>
             </div>
 
-
-            <div class="order-footer">
-
-                <span>
-                    Payment:
-                    {{ order.paymentStatus }}
-                </span>
-
-                <a [routerLink]="[
-                                '/orders',
-                                order.id
-                            ]">
-                    View Details
-                </a>
-
+            <div>
+              <span>Items</span>
+              <strong>
+                {{ order.items.length }}
+              </strong>
             </div>
 
+            <div>
+              <span>Total</span>
+              <strong> ₹{{ order.total }} </strong>
+            </div>
+          </div>
+
+          <div class="order-footer">
+            <span>
+              Payment:
+              {{ order.paymentStatus }}
+            </span>
+
+            <a [routerLink]="['/orders', order.id]"> View Details </a>
+          </div>
         </article>
-
-        }
-
+      }
     </div>
-
-    }
-
+  }
 </section>

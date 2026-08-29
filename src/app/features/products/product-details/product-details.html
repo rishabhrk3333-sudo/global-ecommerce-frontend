@@ -1,131 +1,125 @@
 <div class="product-details-page">
+  <!-- Back Button Navigation -->
   <div class="page-header">
-     <button type="button" class="back-button" (click)="goBack()" > 
-      <span style="font-size: 20px;" >← </span>Back to Products
+    <button type="button" class="back-button" (click)="goBack()">
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2.5"
+        class="back-icon"
+      >
+        <path d="M19 12H5M12 19l-7-7 7-7" />
+      </svg>
+      <span>Back to Products</span>
     </button>
   </div>
- 
+
   @if (loading()) {
     <div class="product-state">
-      <p>Loading product...</p>
+      <div class="spinner"></div>
+      <p>Loading details...</p>
     </div>
-
   } @else if (error() || !product()) {
-
-    <div class="product-state">
-      <h2>Product not found</h2>
-      <p>The product you are looking for is not available.</p>
-
-      <button
-        type="button"
-        class="primary-button"
-        (click)="goBack()"
-      >
-        Back to Products
+    <div class="product-state error-card">
+      <div class="error-icon">🔍</div>
+      <h2>Product Not Found</h2>
+      <p>The item you are looking for is unavailable or has been removed.</p>
+      <button type="button" class="btn btn-primary" (click)="goBack()">
+        Explore Other Products
       </button>
     </div>
-
   } @else {
-
-    <div class="product-details">
-
+    <div class="product-details-grid">
+      <!-- Left - Interactive Image Container -->
       <div class="product-image-section">
-
-        <img
-          [src]="product()!.image"
-          [alt]="product()!.name"
-          class="product-image"
-        />
-
+        <div class="image-wrapper">
+          <img [src]="product()!.image" [alt]="product()!.name" class="product-image" />
+        </div>
       </div>
 
-
+      <!-- Right - Detailed Info Column -->
       <div class="product-info">
-
-        <span class="product-category">
-          {{ product()!.category }}
-        </span>
-
-        <h1>
-          {{ product()!.name }}
-        </h1>
-
-        <div class="product-rating">
-          ★ {{ product()!.rating }}
+        <div class="header-badge-row">
+          <span class="product-category">{{ product()!.category }}</span>
+          <div class="product-rating">
+            <span class="star">★</span>
+            <span class="rating-value">{{ product()!.rating }}</span>
+          </div>
         </div>
 
-        <p class="product-description">
-          {{ product()!.description }}
-        </p>
+        <h1 class="product-title">{{ product()!.name }}</h1>
 
-        <div class="product-price">
-          ₹{{ product()!.price }}
+        <div class="price-section">
+          <span class="currency">₹</span>
+          <span class="amount">{{ product()!.price }}</span>
         </div>
 
+        <p class="product-description">{{ product()!.description }}</p>
 
-        <div class="quantity-section">
+        <div class="divider"></div>
 
-          <span>Quantity</span>
-
-          <div class="quantity-control">
-
-            <button
-              type="button"
-              (click)="decreaseQuantity()"
-              [disabled]="quantity() === 1"
-            >
-              −
-            </button>
-
-            <span>
-              {{ quantity() }}
-            </span>
-
-            <button
-              type="button"
-              (click)="increaseQuantity()"
-            >
-              +
-            </button>
-
+        <!-- Quantity Selector & Actions -->
+        <div class="purchase-actions">
+          <div class="quantity-wrapper">
+            <label class="quantity-label">Quantity</label>
+            <div class="quantity-control">
+              <button
+                type="button"
+                (click)="decreaseQuantity()"
+                [disabled]="quantity() === 1"
+                aria-label="Decrease quantity"
+              >
+                −
+              </button>
+              <span class="quantity-display">{{ quantity() }}</span>
+              <button type="button" (click)="increaseQuantity()" aria-label="Increase quantity">
+                +
+              </button>
+            </div>
           </div>
 
+          <button type="button" class="add-to-cart-button" (click)="addToCart()">
+            <!-- cart icon svg -->
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              class="cart-icon"
+            >
+              <circle cx="9" cy="21" r="1"></circle>
+              <circle cx="20" cy="21" r="1"></circle>
+              <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+            </svg>
+            <span>Add to Cart</span>
+          </button>
         </div>
 
-
-        <button
-          type="button"
-          class="add-to-cart-button"
-          (click)="addToCart()"
-        >
-          Add to Cart
-        </button>
-
-
+        <!-- Feature Highlights Grid -->
         <div class="product-features">
-
-          <div class="feature">
-            <strong>Secure Payment</strong>
-            <span>Safe and secure checkout</span>
+          <div class="feature-card">
+            <div class="feature-text">
+              <strong>Secure Checkout</strong>
+              <span>Protected SSL encrypted payments</span>
+            </div>
           </div>
 
-          <div class="feature">
-            <strong>Fast Delivery</strong>
-            <span>Reliable delivery service</span>
+          <div class="feature-card">
+            <div class="feature-text">
+              <strong>Fast Express Delivery</strong>
+              <span>Dispatched within 24 hours</span>
+            </div>
           </div>
 
-          <div class="feature">
-            <strong>Easy Returns</strong>
-            <span>Simple return policy</span>
+          <div class="feature-card">
+            <div class="feature-text">
+              <strong>30-Day Hassle Returns</strong>
+              <span>Easy, immediate refund policy</span>
+            </div>
           </div>
-
         </div>
-
       </div>
-
     </div>
-
   }
-
 </div>
-

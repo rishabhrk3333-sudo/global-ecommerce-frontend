@@ -1,9 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { LoaderService } from '../../services/loader.service/loader';
 
 @Component({
   selector: 'app-loader',
   imports: [],
-  templateUrl: './loader.html',
+  template: ` @if (loaderService.isLoading()) {
+    <div class="loader-overlay">
+      <div class="loader"></div>
+    </div>
+  }`,
   styleUrl: './loader.css',
 })
-export class Loader {}
+export class Loader {
+  public loaderService = inject(LoaderService);
+}
