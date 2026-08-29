@@ -1,1 +1,125 @@
-<p>order-tracking works!</p>
+<section class="tracking-page">
+  @if (loading()) {
+    <div class="tracking-state">
+      <p>Loading order tracking...</p>
+    </div>
+  } @else if (error()) {
+    <div class="tracking-state">
+      <h2>
+        {{ error() }}
+      </h2>
+
+      <a routerLink="/orders" class="back-link"> Back to Orders </a>
+    </div>
+  } @else if (order()) {
+    <!-- Header -->
+
+    <div class="page-header">
+      <div class="page-header-text">
+        <h1 class="page-heading">Order Tracking</h1>
+
+        <span class="page-title"> Order #{{ order()!.id }} </span>
+      </div>
+
+      <a [routerLink]="['/orders', order()!.id]" class="back-button"> Order Details </a>
+    </div>
+
+    <!-- Order Summary -->
+
+    <div class="tracking-summary">
+      <div>
+        <span class="summary-label"> Order Date </span>
+
+        <strong>
+          {{ order()!.date }}
+        </strong>
+      </div>
+
+      <div>
+        <span class="summary-label"> Current Status </span>
+
+        <strong class="current-status">
+          {{ order()!.status }}
+        </strong>
+      </div>
+    </div>
+
+    <!-- Tracking Timeline -->
+
+    <div class="tracking-card">
+      <h2>Delivery Status</h2>
+
+      <div class="timeline">
+        <!-- Order Placed -->
+
+        <div
+          class="timeline-item"
+          [class.completed]="isCompleted('PENDING')"
+          [class.current]="isCurrent('PENDING')"
+        >
+          <div class="timeline-icon">✓</div>
+
+          <div class="timeline-content">
+            <h3>Order Placed</h3>
+
+            <p>Your order has been placed successfully.</p>
+          </div>
+        </div>
+
+        <!-- Processing -->
+
+        <div
+          class="timeline-item"
+          [class.completed]="isCompleted('PROCESSING')"
+          [class.current]="isCurrent('PROCESSING')"
+        >
+          <div class="timeline-icon">✓</div>
+
+          <div class="timeline-content">
+            <h3>Processing</h3>
+
+            <p>Your order is being prepared.</p>
+          </div>
+        </div>
+
+        <!-- Shipped -->
+
+        <div
+          class="timeline-item"
+          [class.completed]="isCompleted('SHIPPED')"
+          [class.current]="isCurrent('SHIPPED')"
+        >
+          <div class="timeline-icon">✓</div>
+
+          <div class="timeline-content">
+            <h3>Shipped</h3>
+
+            <p>Your order is on the way.</p>
+          </div>
+        </div>
+
+        <!-- Delivered -->
+
+        <div
+          class="timeline-item"
+          [class.completed]="isCompleted('DELIVERED')"
+          [class.current]="isCurrent('DELIVERED')"
+        >
+          <div class="timeline-icon">✓</div>
+
+          <div class="timeline-content">
+            <h3>Delivered</h3>
+
+            <p>Your order has been delivered.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Actions -->
+
+    <div class="tracking-actions">
+      <a [routerLink]="['/orders', order()!.id]" class="back-button"> Back to Order Details </a>
+    </div>
+  }
+</section>

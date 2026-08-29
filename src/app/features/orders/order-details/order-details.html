@@ -1,1 +1,156 @@
-<p>order-details works!</p>
+<section class="order-details-page">
+  @if (loading()) {
+    <div class="order-state">
+      <p>Loading order...</p>
+    </div>
+  } @else if (error()) {
+    <div class="order-state">
+      <h2>{{ error() }}</h2>
+
+      <a routerLink="/orders" class="back-link"> Back to Orders </a>
+    </div>
+  } @else if (order()) {
+    <!-- Header -->
+
+    <div class="page-header">
+      <div class="page-header-text">
+        <h1 class="page-heading">Order Details</h1>
+
+        <span class="page-title"> Order #{{ order()!.id }} </span>
+      </div>
+
+      <a [routerLink]="['/orders', order()!.id, 'tracking']" class="track-button"> Track Order </a>
+    </div>
+
+    <!-- Order Information -->
+
+    <div class="order-info">
+      <div class="info-item">
+        <span class="info-label"> Order Date </span>
+
+        <span class="info-value">
+          {{ order()!.date }}
+        </span>
+      </div>
+
+      <div class="info-item">
+        <span class="info-label"> Status </span>
+
+        <span
+          class="status"
+          [class.shipped]="order()!.status === 'SHIPPED'"
+          [class.delivered]="order()!.status === 'DELIVERED'"
+        >
+          {{ order()!.status }}
+        </span>
+      </div>
+
+      <div class="info-item">
+        <span class="info-label"> Payment </span>
+
+        <span class="info-value">
+          {{ order()!.paymentMethod }}
+        </span>
+      </div>
+
+      <div class="info-item">
+        <span class="info-label"> Payment Status </span>
+
+        <span class="payment-success">
+          {{ order()!.paymentStatus }}
+        </span>
+      </div>
+    </div>
+
+    <!-- Products -->
+
+    <div class="section">
+      <div class="section-header">
+        <h2>Items</h2>
+
+        <span>
+          {{ order()!.items.length }}
+          {{ order()!.items.length === 1 ? 'Item' : 'Items' }}
+        </span>
+      </div>
+
+      <div class="items">
+        @for (item of order()!.items; track item.productId) {
+          <div class="item">
+            <div class="item-left">
+              <div class="item-image">🛍️</div>
+
+              <div>
+                <h3>
+                  {{ item.productName }}
+                </h3>
+
+                <p>₹{{ item.price }} × {{ item.quantity }}</p>
+              </div>
+            </div>
+
+            <strong> ₹{{ item.price * item.quantity }} </strong>
+          </div>
+        }
+      </div>
+    </div>
+
+    <!-- Payment -->
+
+    <div class="section">
+      <div class="section-header">
+        <h2>Payment Information</h2>
+      </div>
+
+      <div class="details-row">
+        <span> Payment Method </span>
+
+        <strong>
+          {{ order()!.paymentMethod }}
+        </strong>
+      </div>
+
+      <div class="details-row">
+        <span> Payment Status </span>
+
+        <strong class="payment-success">
+          {{ order()!.paymentStatus }}
+        </strong>
+      </div>
+    </div>
+
+    <!-- Order Summary -->
+
+    <div class="summary">
+      <div class="summary-row">
+        <span>Subtotal</span>
+
+        <span> ₹{{ order()!.subtotal }} </span>
+      </div>
+
+      <div class="summary-row">
+        <span>Shipping</span>
+
+        <span>
+          {{ order()!.shipping === 0 ? 'Free' : '₹' + order()!.shipping }}
+        </span>
+      </div>
+
+      <div class="summary-divider"></div>
+
+      <div class="summary-total">
+        <span>Total</span>
+
+        <strong> ₹{{ order()!.total }} </strong>
+      </div>
+    </div>
+
+    <!-- Bottom Actions -->
+
+    <div class="actions">
+      <a routerLink="/orders" class="back-button"> Back to Orders </a>
+
+      <a [routerLink]="['/orders', order()!.id, 'tracking']" class="track-button"> Track Order </a>
+    </div>
+  }
+</section>
