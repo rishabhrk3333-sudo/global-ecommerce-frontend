@@ -1,1 +1,90 @@
-<p>dashboard works!</p>
+<section class="admin-dashboard">
+  <!-- Page Header -->
+
+  <div class="page-header">
+    <div class="page-header-text">
+      <h1 class="page-heading">Admin Dashboard</h1>
+
+      <span class="page-title"> Overview of your store </span>
+    </div>
+  </div>
+
+  <!-- Statistics -->
+
+  <div class="stats-grid">
+    <div class="stat-card">
+      <span class="stat-label"> Total Products </span>
+
+      <strong class="stat-value"> 120 </strong>
+
+      <span class="stat-description"> Products in store </span>
+    </div>
+
+    <div class="stat-card">
+      <span class="stat-label"> Total Orders </span>
+
+      <strong class="stat-value"> 248 </strong>
+
+      <span class="stat-description"> Orders received </span>
+    </div>
+
+    <div class="stat-card">
+      <span class="stat-label"> Revenue </span>
+
+      <strong class="stat-value"> ₹2,48,500 </strong>
+
+      <span class="stat-description"> Total sales </span>
+    </div>
+
+    <div class="stat-card">
+      <span class="stat-label"> Pending Orders </span>
+
+      <strong class="stat-value"> 12 </strong>
+
+      <span class="stat-description"> Orders to process </span>
+    </div>
+  </div>
+
+  <!-- Quick Actions -->
+
+  <div class="dashboard-section">
+    <div class="section-header">
+      <div>
+        <h2>Quick Actions</h2>
+
+        <p>Manage your store</p>
+      </div>
+    </div>
+
+    <div class="action-grid">
+      <a routerLink="/products" class="action-card">
+        <strong> Manage Products </strong>
+
+        <span> View and manage products </span>
+      </a>
+
+      <a routerLink="/orders" class="action-card">
+        <strong> Manage Orders </strong>
+
+        <span> View and manage customer orders </span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Recent Orders -->
+  <div class="dashboard-section">
+    <div class="section-header">
+      <div>
+        <h2>Recent Orders</h2>
+
+        <p>Latest orders from customers</p>
+      </div>
+
+      <a routerLink="/orders" class="view-all"> View All </a>
+    </div>
+
+    <div class="empty-orders">
+      <p>Recent orders will appear here.</p>
+    </div>
+  </div>
+</section>
