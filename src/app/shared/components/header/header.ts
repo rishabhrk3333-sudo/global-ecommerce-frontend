@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { CartService } from '../../services/cart.service/cart-service';
 import { AuthService } from '../../services/auth.service/auth';
@@ -18,6 +18,9 @@ export class Header {
 
   readonly currentUser = this.authService.currentUser;
   readonly isLoggedIn = this.authService.isLoggedIn;
+
+  isMenuOpen = signal(false);
+  isNavOpen = signal(false);
 
   navItems = [
     {
@@ -41,6 +44,27 @@ export class Header {
       isAdmin: true,
     },
   ];
+
+  toggleNav(): void {
+    this.isNavOpen.update((prev) => !prev);
+  }
+
+  closeNav(): void {
+    this.isNavOpen.set(false);
+  }
+
+  toggleMenu(): void {
+    this.isMenuOpen.update((prev) => !prev);
+  }
+
+  closeMenu(): void {
+    this.isMenuOpen.set(false);
+  }
+
+  onLogout(): void {
+    this.closeMenu();
+    this.logout();
+  }
 
   logout(): void {
     this.authService.logout();

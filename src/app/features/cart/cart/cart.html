@@ -1,23 +1,26 @@
 <section class="cart-page">
   <!-- Page Header -->
-  <header class="page-header">
-    <div>
-      <span class="page-eyebrow">SHOPPING CART</span>
-
-      <h1 class="page-heading">Your Cart</h1>
-
-      <p class="page-title">Review your selected products before checkout.</p>
-    </div>
-
-    <a routerLink="/products" class="continue-shopping"> ← Continue Shopping </a>
-  </header>
+  <div class="page-header">
+    <a routerLink="/products" class="continue-shopping">
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2.5"
+        class="back-icon"
+      >
+        <path d="M19 12H5M12 19l-7-7 7-7" />
+      </svg>
+      Continue Shopping
+    </a>
+  </div>
 
   @if (cartService.items().length > 0) {
     <div class="cart-layout">
       <!-- Cart Items -->
       <div class="cart-items">
         <div class="cart-items-header">
-          <h2>Your Items</h2>
+          <h2>Your Cart Items</h2>
 
           <span>
             {{ cartService.itemCount() }}

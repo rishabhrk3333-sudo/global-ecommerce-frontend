@@ -1,11 +1,7 @@
 .admin-dashboard {
   width: 100%;
   max-width: var(--max-width);
-
   margin: 0 auto;
-
-  padding: 0 var(--spacing-lg) 2rem;
-
   box-sizing: border-box;
 }
 

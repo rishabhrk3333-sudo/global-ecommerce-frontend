@@ -15,6 +15,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  position: relative;
 }
 
 .logo {
@@ -22,6 +23,16 @@
   font-weight: 700;
   text-decoration: none;
   color: var(--color-text-primary);
+}
+
+.mobile-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  color: var(--color-text-primary);
+  cursor: pointer;
+  padding: 4px;
 }
 
 .navigation {
@@ -56,15 +67,99 @@
   border-radius: 999px;
   background: var(--color-primary);
   color: var(--color-surface);
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 600;
+  padding: 0px 4px;
 }
 
 .header-actions {
   display: flex;
-  flex-direction: row;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
+}
+
+.user-menu-container {
+  position: relative;
+  display: inline-block;
+}
+
+.user-menu-btn {
+  background: transparent;
+  border: 1px solid #ccc;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+}
+
+.user-menu-btn:hover {
+  background-color: var(--color-surface);
+}
+
+.user-name {
+  max-width: 120px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  min-width: 180px;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  padding: 8px 0;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-header {
+  padding: 8px 16px;
+  display: flex;
+  flex-direction: column;
+  color: var(--color-text-primary);
+}
+
+.menu-header small {
+  color: var(--color-text-secondary);
+  word-break: break-all;
+}
+
+.dropdown-menu hr {
+  border: none;
+  border-top: 1px solid var(--color-border);
+  margin: 6px 0;
+}
+
+.dropdown-menu a,
+.dropdown-menu .logout-btn {
+  padding: 8px 16px;
+  text-decoration: none;
+  color: var(--color-text-primary);
+  text-align: left;
+  background: none;
+  border: none;
+  width: 100%;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.dropdown-menu a:hover,
+.dropdown-menu .logout-btn:hover {
+  background-color: var(--color-border);
+}
+
+.dropdown-menu .logout-btn {
+  color: #d9534f;
 }
 
 .login-button {
@@ -86,7 +181,7 @@
   padding: 0;
   border-radius: 50%;
   background: transparent;
-  color: #dcd0d0;
+  color: var(--color-text-primary);
   cursor: pointer;
   font-size: 16px;
   transition:
@@ -95,7 +190,52 @@
 }
 
 .theme-toggle:hover {
-  background: #ffffff;
-  border-color: #ffffff;
-  color: #000000;
+  background: var(--color-border);
+}
+
+@media (max-width: 768px) {
+  .header-container {
+    padding: 0 16px;
+  }
+
+  .mobile-toggle {
+    display: block;
+    order: 1;
+  }
+
+  .logo-container {
+    order: 2;
+  }
+
+  .header-actions {
+    order: 3;
+    gap: 8px;
+  }
+
+  .navigation {
+    position: absolute;
+    top: 64px;
+    left: 0;
+    width: 100%;
+    background: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+    flex-direction: column;
+    padding: 16px 24px;
+    gap: 16px;
+    display: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  }
+
+  .navigation.open {
+    display: flex;
+  }
+
+  .user-name {
+    max-width: 70px;
+  }
+
+  .dropdown-menu {
+    right: 0;
+    min-width: 160px;
+  }
 }

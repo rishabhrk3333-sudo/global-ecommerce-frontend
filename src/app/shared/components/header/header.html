@@ -4,10 +4,12 @@
       <a routerLink="/products" class="logo"> ShopSphere </a>
     </div>
 
-    <nav class="navigation">
+    <button type="button" class="mobile-toggle" (click)="toggleNav()">☰</button>
+
+    <nav class="navigation" [class.open]="isNavOpen()">
       @for (item of navItems; track item.route) {
         @if (!item.isAdmin || currentUser()?.role === 'admin') {
-          <a [routerLink]="item.route" routerLinkActive="active">
+          <a [routerLink]="item.route" routerLinkActive="active" (click)="closeNav()">
             {{ item.label }}
             @if (item.label === 'Cart' && cartService.itemCount() > 0) {
               <span class="cart-count"> {{ cartService.itemCount() }} </span>
@@ -17,7 +19,6 @@
       }
     </nav>
 
-    <!-- Authentication -->
     <div class="header-actions">
       <button type="button" class="theme-toggle" (click)="themeService.toggleTheme()">
         @if (themeService.isDarkMode()) {
@@ -26,12 +27,25 @@
           ☾
         }
       </button>
-      @if (isLoggedIn()) {
-        <span class="user-name">
-          {{ currentUser()?.name }}
-        </span>
 
-        <button type="button" class="login-button" (click)="logout()">Logout</button>
+      @if (isLoggedIn()) {
+        <div class="user-menu-container">
+          <button type="button" class="user-menu-btn" (click)="toggleMenu()">
+            <span class="user-name">{{ currentUser()?.name }}</span>
+            <span class="arrow">▾</span>
+          </button>
+
+          @if (isMenuOpen()) {
+            <div class="dropdown-menu">
+              <div class="menu-header">
+                <strong>{{ currentUser()?.name }}</strong>
+                <small>{{ currentUser()?.email }}</small>
+              </div>
+              <hr />
+              <button type="button" class="logout-btn" (click)="onLogout()">Logout</button>
+            </div>
+          }
+        </div>
       } @else {
         <a routerLink="/login" class="login-button"> Login </a>
       }

@@ -318,7 +318,6 @@ select:focus {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  margin-bottom: 1.5rem;
   padding: 8px 14px;
   border: 1px solid var(--color-border);
   border-radius: var(--border-radius-md, 8px);
