@@ -15,7 +15,7 @@
     <div class="stat-card">
       <span class="stat-label"> Total Products </span>
 
-      <strong class="stat-value"> 120 </strong>
+      <strong class="stat-value">{{ totalProducts() }}</strong>
 
       <span class="stat-description"> Products in store </span>
     </div>
@@ -23,7 +23,7 @@
     <div class="stat-card">
       <span class="stat-label"> Total Orders </span>
 
-      <strong class="stat-value"> 248 </strong>
+      <strong class="stat-value"> {{ totalOrders() }} </strong>
 
       <span class="stat-description"> Orders received </span>
     </div>
@@ -31,7 +31,7 @@
     <div class="stat-card">
       <span class="stat-label"> Revenue </span>
 
-      <strong class="stat-value"> ₹2,48,500 </strong>
+      <strong class="stat-value"> ₹{{ totalRevenue() }} </strong>
 
       <span class="stat-description"> Total sales </span>
     </div>
@@ -39,7 +39,7 @@
     <div class="stat-card">
       <span class="stat-label"> Pending Orders </span>
 
-      <strong class="stat-value"> 12 </strong>
+      <strong class="stat-value"> {{ pendingOrders() }}</strong>
 
       <span class="stat-description"> Orders to process </span>
     </div>
@@ -83,8 +83,38 @@
       <a routerLink="/orders" class="view-all"> View All </a>
     </div>
 
-    <div class="empty-orders">
-      <p>Recent orders will appear here.</p>
-    </div>
+    @if (getRecentOrders().length > 0) {
+      <div class="recent-orders">
+        @for (order of getRecentOrders(); track order.id) {
+          <a [routerLink]="['/orders', order.id]" class="recent-order">
+            <div class="order-info">
+              <strong>
+                {{ order.id }}
+              </strong>
+
+              <span>
+                {{ order.date }}
+              </span>
+            </div>
+
+            <div class="order-status">
+              <span
+                class="status"
+                [class.shipped]="order.status === 'SHIPPED'"
+                [class.delivered]="order.status === 'DELIVERED'"
+              >
+                {{ order.status }}
+              </span>
+            </div>
+
+            <strong class="order-total"> ₹{{ order.total }} </strong>
+          </a>
+        }
+      </div>
+    } @else {
+      <div class="empty-orders">
+        <p>No orders found.</p>
+      </div>
+    }
   </div>
 </section>

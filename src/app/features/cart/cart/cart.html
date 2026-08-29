@@ -1,119 +1,141 @@
 <section class="cart-page">
+  <!-- Page Header -->
+  <header class="page-header">
+    <div>
+      <span class="page-eyebrow">SHOPPING CART</span>
 
-    <div class="page-header">
-        <div class="page-header-text">
-            <span class="page-heading">Your Cart</span>
-            <span class="page-title">Review your selected products</span>
-        </div>
+      <h1 class="page-heading">Your Cart</h1>
+
+      <p class="page-title">Review your selected products before checkout.</p>
     </div>
 
-    @if (cartService.items().length > 0) {
+    <a routerLink="/products" class="continue-shopping"> ← Continue Shopping </a>
+  </header>
 
+  @if (cartService.items().length > 0) {
     <div class="cart-layout">
+      <!-- Cart Items -->
+      <div class="cart-items">
+        <div class="cart-items-header">
+          <h2>Your Items</h2>
 
-        <div class="cart-items">
-
-            @for (item of cartService.items(); track item.product.id) {
-
-            <article class="cart-item">
-
-                <img [src]="item.product.image" [alt]="item.product.name" class="cart-item-image" />
-
-                <div class="cart-item-details">
-
-                    <h2>{{ item.product.name }}</h2>
-
-                    <p>
-                        ₹{{ item.product.price }}
-                    </p>
-
-                    <div class="quantity-control">
-
-                        <button type="button" (click)="decreaseQuantity(
-                    item.product.id,
-                    item.quantity
-                  )">
-                            −
-                        </button>
-
-                        <span>
-                            {{ item.quantity }}
-                        </span>
-
-                        <button type="button" (click)="increaseQuantity(
-                    item.product.id,
-                    item.quantity
-                  )">
-                            +
-                        </button>
-
-                    </div>
-
-                </div>
-
-                <div class="cart-item-total">
-
-                    <strong>
-                        ₹{{ item.product.price * item.quantity }}
-                    </strong>
-
-                    <button type="button" class="remove-button" (click)="removeItem(item.product.id)">
-                        Remove
-                    </button>
-
-                </div>
-
-            </article>
-
-            }
-
-            <button type="button" class="clear-cart-button" (click)="clearCart()">
-                Clear Cart
-            </button>
-
+          <span>
+            {{ cartService.itemCount() }}
+            {{ cartService.itemCount() === 1 ? 'item' : 'items' }}
+          </span>
         </div>
 
-
-        <aside class="cart-summary">
-
-            <h2>Order Summary</h2>
-
-            <div class="summary-row">
-                <span>Items</span>
-                <span>{{ cartService.itemCount() }}</span>
+        @for (item of cartService.items(); track item.product.id) {
+          <article class="cart-item">
+            <!-- Product Image -->
+            <div class="cart-item-image-wrapper">
+              <img [src]="item.product.image" [alt]="item.product.name" class="cart-item-image" />
             </div>
 
-            <div class="summary-row">
-                <span>Subtotal</span>
-                <strong>
-                    ₹{{ cartService.subtotal() }}
-                </strong>
+            <!-- Product Details -->
+            <div class="cart-item-details">
+              <div class="product-info">
+                <h2>
+                  {{ item.product.name }}
+                </h2>
+
+                <p class="product-price">₹{{ item.product.price }}</p>
+              </div>
+
+              <div class="item-actions">
+                <div class="quantity-control">
+                  <button
+                    type="button"
+                    aria-label="Decrease quantity"
+                    (click)="decreaseQuantity(item.product.id, item.quantity)"
+                  >
+                    −
+                  </button>
+
+                  <span>
+                    {{ item.quantity }}
+                  </span>
+
+                  <button
+                    type="button"
+                    aria-label="Increase quantity"
+                    (click)="increaseQuantity(item.product.id, item.quantity)"
+                  >
+                    +
+                  </button>
+                </div>
+
+                <button type="button" class="remove-button" (click)="removeItem(item.product.id)">
+                  Remove
+                </button>
+              </div>
             </div>
 
-            <button (click)="navigateToCheckout()" type="button" class="checkout-button" routerLink="/checkout">
-                Proceed to Checkout
-            </button>
+            <!-- Item Total -->
+            <div class="cart-item-total">
+              <span class="total-label"> Item Total </span>
 
-        </aside>
+              <strong> ₹{{ item.product.price * item.quantity }} </strong>
+            </div>
+          </article>
+        }
 
+        <!-- Clear Cart -->
+        <button type="button" class="clear-cart-button" (click)="clearCart()">Clear Cart</button>
+      </div>
+
+      <!-- Order Summary -->
+      <aside class="cart-summary">
+        <div class="summary-header">
+          <h2>Order Summary</h2>
+
+          <span class="summary-count">
+            {{ cartService.itemCount() }}
+            {{ cartService.itemCount() === 1 ? 'item' : 'items' }}
+          </span>
+        </div>
+
+        <div class="summary-details">
+          <div class="summary-row">
+            <span>Subtotal</span>
+
+            <span> ₹{{ cartService.subtotal() }} </span>
+          </div>
+
+          <div class="summary-row">
+            <span>Shipping</span>
+
+            <span class="free-text"> FREE </span>
+          </div>
+        </div>
+
+        <div class="summary-total">
+          <span>Total</span>
+
+          <strong> ₹{{ cartService.subtotal() }} </strong>
+        </div>
+
+        <button type="button" class="checkout-button" (click)="navigateToCheckout()">
+          Proceed to Checkout
+          <span>→</span>
+        </button>
+
+        <div class="secure-checkout">
+          <span>🔒</span>
+          Secure checkout
+        </div>
+      </aside>
     </div>
-
-    } @else {
-
+  } @else {
+    <!-- Empty Cart -->
     <div class="empty-cart">
+      <div class="empty-cart-icon">🛒</div>
 
-        <h2>Your cart is empty</h2>
+      <h2>Your cart is empty</h2>
 
-        <p>
-            Add some products to your cart to continue.
-        </p>
+      <p>Looks like you haven't added anything to your cart yet.</p>
 
-        <a routerLink="/products" class="primary-button">
-            Browse Products
-        </a>
-
+      <a routerLink="/products" class="primary-button"> Browse Products </a>
     </div>
-
-    }
-
+  }
 </section>
