@@ -16,30 +16,34 @@ export class Header {
   router = inject(Router);
   themeService = inject(ThemeService);
 
-   navItems = [
+  readonly currentUser = this.authService.currentUser;
+  readonly isLoggedIn = this.authService.isLoggedIn;
+
+  navItems = [
     {
       label: 'Products',
       route: '/products',
-      isAdmin: false
+      isAdmin: false,
     },
     {
       label: 'Orders',
       route: '/orders',
-      isAdmin: false
+      isAdmin: false,
     },
     {
       label: 'Cart',
       route: '/cart',
-      isAdmin: false
+      isAdmin: false,
     },
     {
       label: 'Admin',
       route: '/admin/dashboard',
-      isAdmin: true
-    }
+      isAdmin: true,
+    },
   ];
 
-  logout(): void { 
-    this.authService.logout(); 
-    this.router.navigate(['/login']); }
+  logout(): void {
+    this.authService.logout();
+    this.router.navigate(['/login']);
+  }
 }
