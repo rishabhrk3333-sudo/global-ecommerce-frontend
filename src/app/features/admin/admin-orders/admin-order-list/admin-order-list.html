@@ -1,1 +1,79 @@
-<p>admin-order-list works!</p>
+<section class="admin-orders-page">
+  <div class="page-header">
+    <div class="page-header-text">
+      <h1 class="page-heading">Orders</h1>
+
+      <p class="page-title">Manage customer orders.</p>
+    </div>
+  </div>
+
+  @if (loading()) {
+    <div class="loading-state">
+      <p>Loading orders...</p>
+    </div>
+  } @else if (orders().length > 0) {
+    <div class="orders-table-container">
+      <table class="orders-table">
+        <thead>
+          <tr>
+            <th>Order ID</th>
+            <th>Date</th>
+            <th>Items</th>
+            <th>Total</th>
+            <th>Payment</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          @for (order of orders(); track order.id) {
+            <tr>
+              <td>
+                <strong>
+                  {{ order.id }}
+                </strong>
+              </td>
+
+              <td>
+                {{ order.date }}
+              </td>
+
+              <td>
+                {{ order.items.length }}
+              </td>
+
+              <td>₹{{ order.total }}</td>
+
+              <td>
+                <span class="payment-status" [class.success]="order.paymentStatus === 'SUCCESS'">
+                  {{ order.paymentStatus }}
+                </span>
+              </td>
+
+              <td>
+                <span
+                  class="order-status"
+                  [class.shipped]="order.status === 'SHIPPED'"
+                  [class.delivered]="order.status === 'DELIVERED'"
+                >
+                  {{ order.status }}
+                </span>
+              </td>
+
+              <td>
+                <a [routerLink]="['/admin/orders', order.id]" class="view-button"> View </a>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  } @else {
+    <div class="no-products">
+      <span> No orders found </span>
+
+      <p>There are no customer orders available.</p>
+    </div>
+  }
+</section>

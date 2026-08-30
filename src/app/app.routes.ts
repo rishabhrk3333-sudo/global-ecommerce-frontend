@@ -72,7 +72,6 @@ export const routes: Routes = [
         (m) => m.AddProduct,
       ),
   },
-
   {
     path: 'admin/products/edit/:id',
     canActivate: [adminGuard],
@@ -81,7 +80,14 @@ export const routes: Routes = [
         (m) => m.EditProduct,
       ),
   },
-
+  {
+    path: 'admin/orders',
+    canActivate: [adminGuard],
+    loadComponent: () =>
+      import('./features/admin/admin-orders/admin-order-list/admin-order-list').then(
+        (m) => m.AdminOrderList,
+      ),
+  },
   {
     path: '**',
     redirectTo: 'products',

@@ -1,0 +1,150 @@
+.admin-orders-page {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+}
+
+/* Table */
+
+.orders-table-container {
+  width: 100%;
+
+  overflow-x: auto;
+
+  background: var(--color-surface);
+
+  border: 1px solid var(--color-border);
+
+  border-radius: var(--border-radius-md);
+
+  box-shadow: var(--shadow-sm);
+}
+
+.orders-table {
+  width: 100%;
+
+  min-width: 800px;
+
+  border-collapse: collapse;
+}
+
+/* Header */
+
+.orders-table th {
+  padding: 12px 16px;
+
+  background: var(--color-background);
+
+  border-bottom: 1px solid var(--color-border);
+
+  color: var(--color-text-secondary);
+
+  font-size: 12px;
+
+  font-weight: 600;
+
+  text-align: left;
+}
+
+/* Cells */
+
+.orders-table td {
+  padding: 14px 16px;
+
+  border-bottom: 1px solid var(--color-border);
+
+  color: var(--color-text-primary);
+
+  font-size: 13px;
+}
+
+.orders-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.orders-table tbody tr:hover {
+  background: var(--color-background);
+}
+
+/* Payment */
+
+.payment-status {
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.payment-status.success {
+  color: var(--color-success);
+}
+
+/* Order Status */
+
+.order-status {
+  display: inline-block;
+
+  padding: 5px 9px;
+
+  border-radius: var(--border-radius-sm);
+
+  background: var(--color-background);
+
+  color: var(--color-text-secondary);
+
+  font-size: 11px;
+
+  font-weight: 600;
+}
+
+.order-status.shipped {
+  color: var(--color-info);
+}
+
+.order-status.delivered {
+  color: var(--color-success);
+}
+
+/* View Button */
+
+.view-button {
+  display: inline-block;
+
+  padding: 6px 10px;
+
+  border: 1px solid var(--color-border);
+
+  border-radius: var(--border-radius-sm);
+
+  background: var(--color-surface);
+
+  color: var(--color-text-primary);
+
+  text-decoration: none;
+
+  font-size: 11px;
+
+  font-weight: 500;
+
+  transition: all 0.2s ease;
+}
+
+.view-button:hover {
+  border-color: var(--color-primary);
+
+  color: var(--color-primary);
+}
+
+/* Loading */
+
+.loading-state {
+  min-height: 300px;
+
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  color: var(--color-text-secondary);
+
+  font-size: 14px;
+}
