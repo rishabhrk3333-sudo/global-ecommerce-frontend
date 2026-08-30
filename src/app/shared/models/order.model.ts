@@ -1,3 +1,5 @@
+export type PaymentMethod = 'STRIPE' | 'PAYPAL';
+export type PaymentStatus = 'PENDING' | 'SUCCESS' | 'FAILED';
 export type OrderStatus =
   'PLACED' | 'PAYMENT_CONFIRMED' | 'PENDING' | 'PROCESSING' | 'SHIPPED' | 'DELIVERED' | 'CANCELLED';
 
@@ -16,7 +18,7 @@ export interface Order {
   subtotal: number;
   shipping: number;
   total: number;
-  paymentMethod: 'STRIPE' | 'PAYPAL';
-  paymentStatus: 'PENDING' | 'SUCCESS' | 'FAILED';
+  paymentMethod: PaymentMethod;
+  paymentStatus: PaymentStatus;
   status: OrderStatus;
 }

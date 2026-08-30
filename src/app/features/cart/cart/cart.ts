@@ -1,40 +1,23 @@
-import {
-  Component,
-  inject
-} from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CartService } from '../../../shared/services/cart.service/cart-service';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
+  imports: [RouterLink],
   templateUrl: './cart.html',
-  styleUrl: './cart.css'
+  styleUrl: './cart.css',
 })
 export class Cart {
-
   readonly cartService = inject(CartService);
-   private router = inject(Router);
+  private router = inject(Router);
 
-  increaseQuantity(
-    productId: number,
-    currentQuantity: number
-  ): void {
-
-    this.cartService.updateQuantity(
-      productId,
-      currentQuantity + 1
-    );
+  increaseQuantity(productId: number, currentQuantity: number): void {
+    this.cartService.updateQuantity(productId, currentQuantity + 1);
   }
 
-  decreaseQuantity(
-    productId: number,
-    currentQuantity: number
-  ): void {
-
-    this.cartService.updateQuantity(
-      productId,
-      currentQuantity - 1
-    );
+  decreaseQuantity(productId: number, currentQuantity: number): void {
+    this.cartService.updateQuantity(productId, currentQuantity - 1);
   }
 
   removeItem(productId: number): void {
@@ -45,7 +28,7 @@ export class Cart {
     this.cartService.clearCart();
   }
 
-  navigateToCheckout(){
+  navigateToCheckout() {
     this.router.navigate(['/checkout']);
   }
 }

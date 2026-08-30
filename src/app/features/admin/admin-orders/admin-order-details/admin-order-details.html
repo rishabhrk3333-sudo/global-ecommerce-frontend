@@ -1,0 +1,140 @@
+<section class="admin-order-page">
+  <!-- Back -->
+  <div class="page-header">
+    <a routerLink="/admin/orders" class="back-link"> ← Back to Orders </a>
+
+    @if (order()) {
+      <div class="header-content">
+        <div>
+          <h1>Order Details</h1>
+          <p>Order #{{ order()!.id }}</p>
+        </div>
+
+        <span
+          class="status-badge"
+          [class.status-processing]="order()!.status === 'PROCESSING'"
+          [class.status-shipped]="order()!.status === 'SHIPPED'"
+          [class.status-delivered]="order()!.status === 'DELIVERED'"
+          [class.status-cancelled]="order()!.status === 'CANCELLED'"
+        >
+          {{ order()!.status }}
+        </span>
+      </div>
+    }
+  </div>
+
+  @if (order()) {
+    <!-- Order Information -->
+    <div class="info-grid">
+      <div class="info-card">
+        <h2>Order Information</h2>
+
+        <div class="info-row">
+          <span>Order ID</span>
+          <strong>{{ order()!.id }}</strong>
+        </div>
+
+        <div class="info-row">
+          <span>Order Date</span>
+          <strong>{{ order()!.date }}</strong>
+        </div>
+
+        <div class="info-row">
+          <span>Customer ID</span>
+          <strong>{{ order()!.userId }}</strong>
+        </div>
+
+        <div class="info-row">
+          <span>Order Status</span>
+          <strong>{{ order()!.status }}</strong>
+        </div>
+      </div>
+
+      <!-- Payment -->
+      <div class="info-card">
+        <h2>Payment Information</h2>
+
+        <div class="info-row">
+          <span>Payment Method</span>
+          <strong>{{ order()!.paymentMethod }}</strong>
+        </div>
+
+        <div class="info-row">
+          <span>Payment Status</span>
+
+          <strong
+            class="payment-success"
+            [class.payment-failed]="order()!.paymentStatus !== 'SUCCESS'"
+          >
+            {{ order()!.paymentStatus }}
+          </strong>
+        </div>
+      </div>
+    </div>
+
+    <!-- Order Items -->
+    <div class="items-card">
+      <div class="card-header">
+        <h2>Order Items</h2>
+
+        <span>
+          {{ order()!.items.length }}
+          {{ order()!.items.length === 1 ? 'Item' : 'Items' }}
+        </span>
+      </div>
+
+      <div class="items-list">
+        @for (item of order()!.items; track item.productId) {
+          <div class="order-item">
+            <div class="item-info">
+              <h3>{{ item.productName }}</h3>
+
+              <p>Product ID: {{ item.productId }}</p>
+            </div>
+
+            <div class="item-quantity">Qty: {{ item.quantity }}</div>
+
+            <div class="item-price">₹{{ item.price | number: '1.0-0' }}</div>
+          </div>
+        }
+      </div>
+    </div>
+
+    <!-- Order Summary -->
+    <div class="summary-card">
+      <h2>Order Summary</h2>
+
+      <div class="summary-row">
+        <span>Subtotal</span>
+        <span>₹{{ order()!.subtotal | number: '1.0-0' }}</span>
+      </div>
+
+      <div class="summary-row">
+        <span>Shipping</span>
+        <span>₹{{ order()!.shipping | number: '1.0-0' }}</span>
+      </div>
+
+      <div class="summary-row total-row">
+        <strong>Total</strong>
+        <strong>₹{{ order()!.total | number: '1.0-0' }}</strong>
+      </div>
+    </div>
+
+    <!-- Actions -->
+    <div class="actions">
+      <a [routerLink]="['/orders', order()!.id]" class="secondary-button"> Customer View </a>
+
+      <a [routerLink]="['/orders', order()!.id, 'tracking']" class="primary-button">
+        Track Order
+      </a>
+    </div>
+
+  } @else {
+    <div class="empty-state">
+      <h2>Order not found</h2>
+      <p>The requested order could not be found.</p>
+
+      <a routerLink="/admin/orders" class="primary-button"> Back to Orders </a>
+    </div>
+  }
+</section>

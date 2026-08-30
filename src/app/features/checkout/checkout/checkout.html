@@ -1,311 +1,208 @@
 <section class="checkout-page">
-
-    <div class="page-header">
-
-        <div class="page-header-text">
-            <span class="page-heading">Checkout</span>
-            <span class="page-title">
-                Complete your order
-            </span>
-        </div>
-
+  <div class="page-header">
+    <div class="page-header-text">
+      <span class="page-heading">Checkout</span>
+      <span class="page-title"> Complete your order </span>
     </div>
+  </div>
 
-
-    @if (cartService.items().length > 0) {
-
+  @if (cartService.items().length > 0) {
     <div class="checkout-layout">
-
-        <!-- Shipping Information -->
-
-        <div class="checkout-form-section">
-
-            <h2>Shipping Information</h2>
-
-            <form [formGroup]="checkoutForm" (ngSubmit)="continueToPayment()">
-
-                <div class="form-grid">
-
-                    <!-- Full Name -->
-
-                    <div class="form-field">
-
-                        <label for="fullName">
-                            Full Name
-                        </label>
-
-                        <input id="fullName" type="text" formControlName="fullName"
-                            placeholder="Enter your full name" />
-
-                        @if (isFieldInvalid('fullName')) {
-                        <span class="error-message">
-                            Please enter your full name.
-                        </span>
-                        }
-
-                    </div>
-
-
-                    <!-- Email -->
-
-                    <div class="form-field">
-
-                        <label for="email">
-                            Email
-                        </label>
-
-                        <input id="email" type="email" formControlName="email" placeholder="Enter your email" />
-
-                        @if (isFieldInvalid('email')) {
-                        <span class="error-message">
-                            Please enter a valid email.
-                        </span>
-                        }
-
-                    </div>
-
-
-                    <!-- Phone -->
-
-                    <div class="form-field">
-
-                        <label for="phone">
-                            Phone
-                        </label>
-
-                        <input id="phone" type="tel" formControlName="phone" placeholder="10 digit phone number" />
-
-                        @if (isFieldInvalid('phone')) {
-                        <span class="error-message">
-                            Please enter a valid 10 digit phone number.
-                        </span>
-                        }
-
-                    </div>
-
-
-                    <!-- Address -->
-
-                    <div class="form-field full-width">
-
-                        <label for="address">
-                            Address
-                        </label>
-
-                        <textarea id="address" formControlName="address" rows="3"
-                            placeholder="Enter your complete address"></textarea>
-
-                        @if (isFieldInvalid('address')) {
-                        <span class="error-message">
-                            Please enter your address.
-                        </span>
-                        }
-
-                    </div>
-
-
-                    <!-- City -->
-
-                    <div class="form-field">
-
-                        <label for="city">
-                            City
-                        </label>
-
-                        <input id="city" type="text" formControlName="city" placeholder="City" />
-
-                        @if (isFieldInvalid('city')) {
-                        <span class="error-message">
-                            City is required.
-                        </span>
-                        }
-
-                    </div>
-
-
-                    <!-- State -->
-
-                    <div class="form-field">
-
-                        <label for="state">
-                            State
-                        </label>
-
-                        <input id="state" type="text" formControlName="state" placeholder="State" />
-
-                        @if (isFieldInvalid('state')) {
-                        <span class="error-message">
-                            State is required.
-                        </span>
-                        }
-
-                    </div>
-
-
-                    <!-- Postal Code -->
-
-                    <div class="form-field">
-
-                        <label for="postalCode">
-                            Postal Code
-                        </label>
-
-                        <input id="postalCode" type="text" formControlName="postalCode"
-                            placeholder="6 digit postal code" />
-
-                        @if (isFieldInvalid('postalCode')) {
-                        <span class="error-message">
-                            Please enter a valid postal code.
-                        </span>
-                        }
-
-                    </div>
-
-
-                    <!-- Country -->
-
-                    <div class="form-field">
-
-                        <label for="country">
-                            Country
-                        </label>
-
-                        <select formControlName="country">
-
-                            <option value="India">
-                                India
-                            </option>
-
-                            <option value="United States">
-                                United States
-                            </option>
-
-                            <option value="United Kingdom">
-                                United Kingdom
-                            </option>
-
-                            <option value="Australia">
-                                Australia
-                            </option>
-
-                        </select>
-
-                    </div>
-
+      <!-- Shipping & Payment Form Section -->
+      <div class="checkout-form-section">
+        <form [formGroup]="checkoutForm" (ngSubmit)="continueToPayment()">
+          <h2>Shipping Information</h2>
+          <div class="form-grid">
+            <!-- Full Name -->
+            <div class="form-field">
+              <label for="fullName"> Full Name </label>
+              <input
+                id="fullName"
+                type="text"
+                formControlName="fullName"
+                placeholder="Enter your full name"
+              />
+              @if (isFieldInvalid('fullName')) {
+                <span class="error-message"> Please enter your full name. </span>
+              }
+            </div>
+
+            <!-- Email -->
+            <div class="form-field">
+              <label for="email"> Email </label>
+              <input
+                id="email"
+                type="email"
+                formControlName="email"
+                placeholder="Enter your email"
+              />
+              @if (isFieldInvalid('email')) {
+                <span class="error-message"> Please enter a valid email. </span>
+              }
+            </div>
+
+            <!-- Phone -->
+            <div class="form-field">
+              <label for="phone"> Phone </label>
+              <input
+                id="phone"
+                type="tel"
+                formControlName="phone"
+                placeholder="10 digit phone number"
+              />
+              @if (isFieldInvalid('phone')) {
+                <span class="error-message"> Please enter a valid 10 digit phone number. </span>
+              }
+            </div>
+
+            <!-- Address -->
+            <div class="form-field full-width">
+              <label for="address"> Address </label>
+              <textarea
+                id="address"
+                formControlName="address"
+                rows="3"
+                placeholder="Enter your complete address"
+              ></textarea>
+              @if (isFieldInvalid('address')) {
+                <span class="error-message"> Please enter your address. </span>
+              }
+            </div>
+
+            <!-- City -->
+            <div class="form-field">
+              <label for="city"> City </label>
+              <input id="city" type="text" formControlName="city" placeholder="City" />
+              @if (isFieldInvalid('city')) {
+                <span class="error-message"> City is required. </span>
+              }
+            </div>
+
+            <!-- State -->
+            <div class="form-field">
+              <label for="state"> State </label>
+              <input id="state" type="text" formControlName="state" placeholder="State" />
+              @if (isFieldInvalid('state')) {
+                <span class="error-message"> State is required. </span>
+              }
+            </div>
+
+            <!-- Postal Code -->
+            <div class="form-field">
+              <label for="postalCode"> Postal Code </label>
+              <input
+                id="postalCode"
+                type="text"
+                formControlName="postalCode"
+                placeholder="6 digit postal code"
+              />
+              @if (isFieldInvalid('postalCode')) {
+                <span class="error-message"> Please enter a valid postal code. </span>
+              }
+            </div>
+
+            <!-- Country -->
+            <div class="form-field">
+              <label for="country"> Country </label>
+              <select id="country" formControlName="country">
+                <option value="India">India</option>
+                <option value="United States">United States</option>
+                <option value="United Kingdom">United Kingdom</option>
+                <option value="Australia">Australia</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Payment Section -->
+          <div class="payment-section">
+            <h2>Payment Method</h2>
+            <div class="payment-options">
+              <label class="payment-option" [class.selected]="selectedPaymentMethod === 'STRIPE'">
+                <input
+                  type="radio"
+                  name="paymentMethod"
+                  value="STRIPE"
+                  [(ngModel)]="selectedPaymentMethod"
+                  [ngModelOptions]="{ standalone: true }"
+                />
+                <div>
+                  <strong>Stripe</strong>
+                  <p>Pay securely using Stripe</p>
                 </div>
+              </label>
 
+              <label class="payment-option" [class.selected]="selectedPaymentMethod === 'PAYPAL'">
+                <input
+                  type="radio"
+                  name="paymentMethod"
+                  value="PAYPAL"
+                  [(ngModel)]="selectedPaymentMethod"
+                  [ngModelOptions]="{ standalone: true }"
+                />
+                <div>
+                  <strong>PayPal</strong>
+                  <p>Pay securely using PayPal</p>
+                </div>
+              </label>
+            </div>
+          </div>
 
-                <button type="submit" class="checkout-button">
-                    Continue to Payment
-                </button>
+          <!-- Status Banners -->
+          @if (paymentStatus === 'PROCESSING') {
+            <div class="payment-status payment-processing">Processing your payment...</div>
+          }
+          @if (paymentStatus === 'SUCCESS') {
+            <div class="payment-status payment-success">Payment successful!</div>
+          }
+          @if (paymentStatus === 'FAILED') {
+            <div class="payment-status payment-error">Payment failed. Please try again.</div>
+          }
 
-            </form>
+          <button type="submit" class="checkout-button">Continue to Payment</button>
+        </form>
+      </div>
 
+      <!-- Order Summary Sidebar -->
+      <aside class="order-summary">
+        <h2>Order Summary</h2>
+
+        <div class="summary-items">
+          @for (item of cartService.items(); track item.product.id) {
+            <div class="summary-item">
+              <div class="summary-item-info">
+                <span class="summary-item-name">
+                  {{ item.product.name }}
+                </span>
+                <span class="summary-item-quantity"> Qty: {{ item.quantity }} </span>
+              </div>
+              <span> ₹{{ item.product.price * item.quantity }} </span>
+            </div>
+          }
         </div>
 
+        <div class="summary-row">
+          <span> Subtotal </span>
+          <span> ₹{{ cartService.subtotal() }} </span>
+        </div>
 
-        <!-- Order Summary -->
+        <div class="summary-row">
+          <span> Shipping </span>
+          <span> Free </span>
+        </div>
 
-        <aside class="order-summary">
+        <div class="summary-total">
+          <span> Total </span>
+          <strong> ₹{{ cartService.subtotal() }} </strong>
+        </div>
 
-            <h2>Order Summary</h2>
-
-
-            <div class="summary-items">
-
-                @for (
-                item of cartService.items();
-                track item.product.id
-                ) {
-
-                <div class="summary-item">
-
-                    <div class="summary-item-info">
-
-                        <span class="summary-item-name">
-                            {{ item.product.name }}
-                        </span>
-
-                        <span class="summary-item-quantity">
-                            Qty: {{ item.quantity }}
-                        </span>
-
-                    </div>
-
-                    <span>
-                        ₹{{ item.product.price * item.quantity }}
-                    </span>
-
-                </div>
-
-                }
-
-            </div>
-
-
-            <div class="summary-row">
-
-                <span>
-                    Subtotal
-                </span>
-
-                <span>
-                    ₹{{ cartService.subtotal() }}
-                </span>
-
-            </div>
-
-
-            <div class="summary-row">
-
-                <span>
-                    Shipping
-                </span>
-
-                <span>
-                    Free
-                </span>
-
-            </div>
-
-
-            <div class="summary-total">
-
-                <span>
-                    Total
-                </span>
-
-                <strong>
-                    ₹{{ cartService.subtotal() }}
-                </strong>
-
-            </div>
-
-
-            <a routerLink="/cart" class="back-to-cart">
-                ← Back to Cart
-            </a>
-
-        </aside>
-
+        <a routerLink="/cart" class="back-to-cart"> ← Back to Cart </a>
+      </aside>
     </div>
-
-    } @else {
-
+  } @else {
     <div class="no-products">
-
-        <span>Your cart is empty</span>
-
-        <p>
-            Add products before proceeding to checkout.
-        </p>
-
-        <a routerLink="/products" class="primary-button">
-            Browse Products
-        </a>
-
+      <span>Your cart is empty</span>
+      <p>Add products before proceeding to checkout.</p>
+      <a routerLink="/products" class="primary-button"> Browse Products </a>
     </div>
-
-    }
-
+  }
 </section>
