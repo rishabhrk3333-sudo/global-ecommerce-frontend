@@ -1,1 +1,12 @@
-<p>edit-product works!</p>
+@if (product()) {
+  <app-product-form
+    mode="edit"
+    [product]="product()"
+    (formSubmit)="onUpdateProduct($event)"
+    (cancel)="onCancel()"
+  />
+} @else {
+  <div class="loading-state">
+    <p>Loading product details...</p>
+  </div>
+}

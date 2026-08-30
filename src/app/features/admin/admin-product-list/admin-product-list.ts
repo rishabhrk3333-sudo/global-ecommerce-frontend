@@ -23,15 +23,18 @@ export class AdminProductList {
     this.productService.getProducts().subscribe({
       next: (products) => {
         this.products.set(products);
-
         this.loading.set(false);
       },
-
       error: (error: unknown) => {
         console.error('Failed to load admin products', error);
 
         this.loading.set(false);
       },
     });
+  }
+
+  onDelete(id: number): void {
+    this.productService.deleteProduct(id);
+    // State automatically emits the updated list to subscribers
   }
 }

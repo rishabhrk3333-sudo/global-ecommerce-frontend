@@ -1,0 +1,112 @@
+<section class="product-form-page">
+  <div class="page-header">
+    <div class="page-header-text">
+      <span class="page-heading">{{ mode === 'add' ? 'Add Product' : 'Edit Product' }}</span>
+      <span class="page-title">
+        {{
+          mode === 'add' ? 'Add a new product to your store.' : 'Update existing product details.'
+        }}
+      </span>
+    </div>
+  </div>
+
+  <form [formGroup]="productForm" (ngSubmit)="onSubmit()" class="product-form">
+    <!-- Product Name -->
+    <div class="form-field">
+      <label for="name"> Product Name * </label>
+      <input id="name" type="text" formControlName="name" placeholder="Enter product name" />
+      @if (productForm.controls.name.touched && productForm.controls.name.invalid) {
+        <span class="error-message">
+          @if (productForm.controls.name.hasError('required')) {
+            Product name is required.
+          }
+          @if (productForm.controls.name.hasError('minlength')) {
+            Product name must be at least 3 characters.
+          }
+        </span>
+      }
+    </div>
+
+    <!-- Category -->
+    <div class="form-field">
+      <label for="category"> Category * </label>
+      <select id="category" formControlName="category">
+        <option value="">Select category</option>
+        <option value="Electronics">Electronics</option>
+        <option value="Fashion">Fashion</option>
+        <option value="Home">Home</option>
+        <option value="Accessories">Accessories</option>
+      </select>
+      @if (productForm.controls.category.touched && productForm.controls.category.invalid) {
+        <span class="error-message"> Category is required. </span>
+      }
+    </div>
+
+    <!-- Price -->
+    <div class="form-field">
+      <label for="price"> Price * </label>
+      <input id="price" type="number" formControlName="price" placeholder="Enter price" min="1" />
+      @if (productForm.controls.price.touched && productForm.controls.price.invalid) {
+        <span class="error-message">
+          @if (productForm.controls.price.hasError('required')) {
+            Price is required.
+          }
+          @if (productForm.controls.price.hasError('min')) {
+            Price must be greater than 0.
+          }
+        </span>
+      }
+    </div>
+
+    <!-- Stock -->
+    <div class="form-field">
+      <label for="stock"> Stock Quantity * </label>
+      <input
+        id="stock"
+        type="number"
+        formControlName="stock"
+        placeholder="Enter stock quantity"
+        min="0"
+      />
+      @if (productForm.controls.stock.touched && productForm.controls.stock.invalid) {
+        <span class="error-message"> Stock quantity is required. </span>
+      }
+    </div>
+
+    <!-- Image -->
+    <div class="form-field">
+      <label for="image"> Image URL * </label>
+      <input
+        id="image"
+        type="url"
+        formControlName="image"
+        placeholder="https://example.com/image.jpg"
+      />
+      @if (productForm.controls.image.touched && productForm.controls.image.invalid) {
+        <span class="error-message"> Please enter a valid image URL. </span>
+      }
+    </div>
+
+    <!-- Description -->
+    <div class="form-field">
+      <label for="description"> Description * </label>
+      <textarea
+        id="description"
+        formControlName="description"
+        placeholder="Enter product description"
+        rows="5"
+      ></textarea>
+      @if (productForm.controls.description.touched && productForm.controls.description.invalid) {
+        <span class="error-message"> Description must be at least 10 characters. </span>
+      }
+    </div>
+
+    <!-- Actions -->
+    <div class="form-actions">
+      <button type="button" class="cancel-button" (click)="onCancel()">Cancel</button>
+      <button type="submit" class="submit-button">
+        {{ mode === 'add' ? 'Add Product' : 'Save Changes' }}
+      </button>
+    </div>
+  </form>
+</section>
