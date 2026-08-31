@@ -14,6 +14,7 @@ export class ProductService {
   private isLoaded = false;
 
   getProducts(): Observable<ProductModel[]> {
+    // the products loaded the  from the JSON file
     if (!this.isLoaded) {
       return this.http.get<ProductModel[]>(this.productsUrl).pipe(
         tap((products) => {
@@ -31,7 +32,6 @@ export class ProductService {
 
   addProduct(newProductValues: ProductFormValues): Observable<ProductModel> {
     const currentProducts = this.products$.getValue();
-
     const maxId = currentProducts.reduce((max, p) => (p.id > max ? p.id : max), 0);
     const newProduct: ProductModel = {
       ...newProductValues,
@@ -46,7 +46,6 @@ export class ProductService {
   updateProduct(id: number, updatedValues: ProductFormValues): Observable<ProductModel> {
     const currentProducts = this.products$.getValue();
     const index = currentProducts.findIndex((p) => p.id === id);
-
     if (index !== -1) {
       const updatedProduct: ProductModel = {
         ...currentProducts[index],
@@ -55,7 +54,6 @@ export class ProductService {
 
       const updatedList = [...currentProducts];
       updatedList[index] = updatedProduct;
-
       this.products$.next(updatedList);
       return of(updatedProduct);
     }

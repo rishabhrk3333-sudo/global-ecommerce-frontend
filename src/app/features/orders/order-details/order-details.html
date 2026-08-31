@@ -10,8 +10,6 @@
       <a routerLink="/orders" class="back-link"> Back to Orders </a>
     </div>
   } @else if (order()) {
-    <!-- Header -->
-
     <div class="page-header">
       <div class="page-header-text">
         <h1 class="page-heading">Order Details</h1>
@@ -23,7 +21,6 @@
     </div>
 
     <!-- Order Information -->
-
     <div class="order-info">
       <div class="info-item">
         <span class="info-label"> Order Date </span>
@@ -63,7 +60,6 @@
     </div>
 
     <!-- Products -->
-
     <div class="section">
       <div class="section-header">
         <h2>Items</h2>
@@ -96,7 +92,6 @@
     </div>
 
     <!-- Payment -->
-
     <div class="section">
       <div class="section-header">
         <h2>Payment Information</h2>
@@ -149,7 +144,6 @@
 
     <div class="actions">
       <a routerLink="/orders" class="back-button"> Back to Orders </a>
-
       <a [routerLink]="['/orders', order()!.id, 'tracking']" class="track-button"> Track Order </a>
     </div>
   }
