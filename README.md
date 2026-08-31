@@ -1,59 +1,199 @@
-# GlobalEcommerceFrontend
+# Global E-Commerce Order Management Platform
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.17.
+A frontend e-commerce application built with **Angular 21**, designed to provide customer shopping functionality and an admin order/product management system.
 
-## Development server
+## Features
 
-To start a local development server, run:
+### Customer
+
+- User authentication
+- Product listing
+- Product search, filtering and sorting
+- Product details
+- Shopping cart management
+- Checkout
+- Order history
+- Order details
+- Order tracking
+- Light/Dark theme
+
+### Admin
+
+- Admin authentication
+- Admin dashboard
+- Product management
+- Add, edit and delete products
+- Order management
+- Order details
+
+## Tech Stack
+
+- **Angular 21**
+- **TypeScript**
+- **RxJS**
+- **Angular Signals**
+- **Angular Router**
+- **Reactive Forms**
+- **Vitest**
+- **HTML5 / CSS3**
+
+## Project Structure
+
+```text
+src/app/
+├── core/
+│   ├── guards/
+│   └── models/
+│
+├── features/
+│   ├── auth/
+│   ├── products/
+│   ├── cart/
+│   ├── checkout/
+│   ├── orders/
+│   └── admin/
+│
+├── shared/
+│   ├── components/
+│   └── services/
+│
+├── app.config.ts
+├── app.routes.ts
+└── app.ts
+```
+
+The application follows a **feature-based architecture** to keep business functionality separated and maintainable.
+
+## Mock Data
+
+Since this submission focuses on frontend implementation, local JSON files are used to simulate backend APIs.
+
+```text
+src/assets/data/
+├── products.json
+├── orders.json
+└── users.json
+```
+
+Angular services are responsible for accessing and managing this data.
+
+## Authentication
+
+The application supports two roles:
+
+- User
+- Admin
+
+Authentication state is managed using Angular Signals and persisted using `sessionStorage`.
+
+### User Credentials
+
+```text
+Email: user@ec.com
+Password: Reset@123
+```
+
+### Admin Credentials
+
+```text
+Email: admin@ec.com
+Password: Reset@123
+```
+
+> These credentials are for the frontend mock authentication flow only.
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js
+- npm
+- Angular CLI
+
+### Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/rishabhrk3333-sudo/global-ecommerce-frontend.git
+```
+
+Navigate to the project:
+
+```bash
+cd global-ecommerce-frontend
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+## Development Server
+
+Start the application:
 
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Then open:
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
+```text
+http://localhost:4200/
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Production Build
 
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
+To create a production build:
 
 ```bash
 ng build
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+The build output will be generated in the `dist/` directory.
 
-## Running unit tests
+## Running Unit Tests
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+The project uses **Vitest** for unit testing.
+
+Run the complete test suite:
 
 ```bash
 ng test
 ```
 
-## Running end-to-end tests
+Unit tests cover important services and components including authentication, products, cart, orders, dashboard and admin functionality.
 
-For end-to-end (e2e) testing, run:
+## Known Limitations
 
-```bash
-ng e2e
-```
+This is a frontend-focused implementation, so:
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+- Backend APIs are simulated using local JSON data.
+- Authentication is mocked and does not use a real authentication server.
+- No database is connected.
+- No real payment gateway is integrated.
+- Product/order persistence is limited to frontend storage and in-memory state.
 
-## Additional Resources
+## Future Improvements
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- REST API integration
+- JWT authentication
+- Database integration
+- Real payment gateway
+- Server-side pagination
+- Image upload
+- End-to-end testing
+- CI/CD pipeline
+
+## Repository
+
+GitHub:
+https://github.com/rishabhrk3333-sudo/global-ecommerce-frontend
+
+## Author
+
+**Rishabh Kumar**
+
+Frontend Developer | Angular
