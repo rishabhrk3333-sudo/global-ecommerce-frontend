@@ -78,18 +78,4 @@ export class OrderList {
 
     this.sortOption.set(select.value as 'newest' | 'oldest');
   }
-
-  readonly hasActiveFilters = computed(() => {
-    const hasSearch = this.searchTerm().trim().length > 0;
-    const hasStatusFilter = this.statusFilter() !== 'ALL';
-    const isCustomSorted = this.sortOption() !== 'newest'; // Optional: include sorting check
-
-    return hasSearch || hasStatusFilter || isCustomSorted;
-  });
-
-  clearFilters(): void {
-    this.searchTerm.set('');
-    this.statusFilter.set('ALL');
-    this.sortOption.set('newest');
-  }
 }
