@@ -9,7 +9,7 @@ import {
 } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ProductFormValues } from '../../../../shared/models/product.model';
+import { ProductFormValues } from '../../../../core/models/product.model';
 
 @Component({
   selector: 'app-product-form',

@@ -1,6 +1,6 @@
 import { Component, inject, signal } from '@angular/core';
 import { OrderService } from '../../../../shared/services/order.service/order';
-import { Order } from '../../../../shared/models/order.model';
+import { Order } from '../../../../core/models/order.model';
 import { RouterLink } from '@angular/router';
 
 @Component({

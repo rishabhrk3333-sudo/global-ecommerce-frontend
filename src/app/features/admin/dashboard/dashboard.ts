@@ -1,7 +1,7 @@
 import { Component, inject, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { Product as ProductModel } from '../../../shared/models/product.model';
-import { Order as OrderModel } from '../../../shared/models/order.model';
+import { Product as ProductModel } from '../../../core/models/product.model';
+import { Order as OrderModel } from '../../../core/models/order.model';
 import { ProductService } from '../../../shared/services/product.service/product';
 import { OrderService } from '../../../shared/services/order.service/order';
 

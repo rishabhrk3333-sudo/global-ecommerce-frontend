@@ -1,6 +1,6 @@
 import { Component, computed, inject, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { Product } from '../../../shared/models/product.model';
+import { Product } from '../../../core/models/product.model';
 import { ProductService } from '../../../shared/services/product.service/product';
 import { EmptyState } from '../../../shared/components/empty-state/empty-state';
 

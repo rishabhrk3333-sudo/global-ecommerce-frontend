@@ -2,7 +2,7 @@ import { Component, inject, signal } from '@angular/core';
 
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 
-import { Product } from '../../../shared/models/product.model';
+import { Product } from '../../../core/models/product.model';
 import { ProductService } from '../../../shared/services/product.service/product';
 import { CartService } from '../../../shared/services/cart.service/cart-service';
 

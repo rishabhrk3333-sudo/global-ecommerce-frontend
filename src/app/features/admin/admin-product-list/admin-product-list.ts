@@ -1,6 +1,6 @@
 import { Component, inject, signal } from '@angular/core';
 import { ProductService } from '../../../shared/services/product.service/product';
-import { Product } from '../../../shared/models/product.model';
+import { Product } from '../../../core/models/product.model';
 import { RouterLink } from '@angular/router';
 
 @Component({

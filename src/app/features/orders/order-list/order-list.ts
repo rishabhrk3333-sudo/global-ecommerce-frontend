@@ -1,6 +1,6 @@
 import { Component, computed, inject, signal, WritableSignal } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { Order, OrderStatus } from '../../../shared/models/order.model';
+import { Order, OrderStatus } from '../../../core/models/order.model';
 import { OrderService } from '../../../shared/services/order.service/order';
 
 @Component({

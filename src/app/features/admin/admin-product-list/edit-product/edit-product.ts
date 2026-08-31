@@ -1,5 +1,5 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
-import { Product, ProductFormValues } from '../../../../shared/models/product.model';
+import { Product, ProductFormValues } from '../../../../core/models/product.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductForm } from '../product-form/product-form';
 

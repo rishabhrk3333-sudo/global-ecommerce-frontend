@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, map, of, tap } from 'rxjs';
-import { ProductFormValues, Product as ProductModel } from '../../models/product.model';
+import { ProductFormValues, Product as ProductModel } from '../../../core/models/product.model';
 
 @Injectable({
   providedIn: 'root',
