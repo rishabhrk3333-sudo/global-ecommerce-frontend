@@ -1,26 +1,29 @@
 <section class="cart-page">
-  <!-- Page Header -->
-  <div class="page-header">
-    <a routerLink="/products" class="continue-shopping">
-      <svg
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2.5"
-        class="back-icon"
-      >
-        <path d="M19 12H5M12 19l-7-7 7-7" />
-      </svg>
-      Continue Shopping
-    </a>
-  </div>
-
   @if (cartService.items().length > 0) {
     <div class="cart-layout">
       <!-- Cart Items -->
       <div class="cart-items">
         <div class="cart-items-header">
-          <h2>Your Cart Items</h2>
+          <div class="cart-items-header-title">
+            <a routerLink="/products" class="back-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-arrow-left-icon lucide-arrow-left"
+              >
+                <path d="m12 19-7-7 7-7" />
+                <path d="M19 12H5" />
+              </svg>
+            </a>
+            <h2>Your Cart Items</h2>
+          </div>
 
           <span>
             {{ cartService.itemCount() }}

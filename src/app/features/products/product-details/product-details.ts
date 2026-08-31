@@ -70,7 +70,8 @@ export class ProductDetails {
       return;
     }
     this.cartService.addToCart(selectedProduct, this.quantity());
-    // console.log('Product added to cart');
+    alert(this.quantity() + ' Products added into cart ');
+    this.router.navigateByUrl('/cart');
   }
 
   goBack(): void {
