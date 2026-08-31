@@ -4,11 +4,11 @@ import { HttpTestingController, provideHttpClientTesting } from '@angular/common
 
 import { ProductService } from './product';
 import { Product, ProductFormValues } from '../../../core/models/product.model';
+import { EditProduct } from '../../../features/admin/admin-product-list/edit-product/edit-product';
 
-describe('ProductService', () => {
+describe.only('ProductService', () => {
   let service: ProductService;
   let httpTestingController: HttpTestingController;
-
   const mockProducts: Product[] = [
     {
       id: 1,
