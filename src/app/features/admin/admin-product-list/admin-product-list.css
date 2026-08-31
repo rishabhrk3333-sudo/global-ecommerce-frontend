@@ -1,26 +1,18 @@
 .admin-products-page {
-  width: 100%;
   max-width: var(--max-width);
   margin: 0 auto;
   padding: 0 var(--spacing-lg);
 }
 
 /* Add Product */
-
 .add-product-button {
   padding: 9px 14px;
-
   border-radius: var(--border-radius-sm);
-
   background: var(--color-primary);
-
   color: var(--color-surface);
-
   text-decoration: none;
-
   font-size: 13px;
   font-weight: 600;
-
   transition: background 0.2s ease;
 }
 
