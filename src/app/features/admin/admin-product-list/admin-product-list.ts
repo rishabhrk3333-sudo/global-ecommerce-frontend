@@ -27,7 +27,6 @@ export class AdminProductList {
       },
       error: (error: unknown) => {
         console.error('Failed to load admin products', error);
-
         this.loading.set(false);
       },
     });
@@ -35,6 +34,5 @@ export class AdminProductList {
 
   onDelete(id: number): void {
     this.productService.deleteProduct(id);
-    // State automatically emits the updated list to subscribers
   }
 }

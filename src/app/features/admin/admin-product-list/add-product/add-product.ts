@@ -14,6 +14,7 @@ export class AddProduct {
   private readonly router = inject(Router);
   productService = inject(ProductService);
 
+  //Method to add new Product into the product list
   onAddProduct(formData: ProductFormValues): void {
     this.productService.addProduct(formData).subscribe({
       next: (createdProduct) => {

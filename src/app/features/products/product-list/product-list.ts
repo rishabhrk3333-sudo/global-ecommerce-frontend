@@ -3,10 +3,11 @@ import { RouterLink } from '@angular/router';
 import { Product } from '../../../core/models/product.model';
 import { ProductService } from '../../../shared/services/product.service/product';
 import { EmptyState } from '../../../shared/components/empty-state/empty-state';
+import { Loader } from '../../../shared/components/loader/loader';
 
 @Component({
   selector: 'app-product-list',
-  imports: [RouterLink, EmptyState],
+  imports: [RouterLink, EmptyState, Loader],
   templateUrl: './product-list.html',
   styleUrl: './product-list.css',
 })
@@ -17,6 +18,8 @@ export class ProductList {
   searchTerm = signal('');
   selectedCategory = signal('All');
   selectedSort = signal('default');
+  isLoading = signal(true);
+  isError = signal(false);
 
   // Generate categories from products
   categories = computed(() => {
@@ -73,9 +76,13 @@ export class ProductList {
     this.productService.getProducts().subscribe({
       next: (products) => {
         this.products.set(products);
+        this.isLoading.set(false);
+        this.isError.set(false);
       },
       error: (error: unknown) => {
         console.error('Failed to load products:', error);
+        this.isLoading.set(false);
+        this.isError.set(true);
       },
     });
   }

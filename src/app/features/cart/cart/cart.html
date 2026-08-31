@@ -51,9 +51,11 @@
               <div class="item-actions">
                 <div class="quantity-control">
                   <button
+                    class="quantity-control-btn"
                     type="button"
                     aria-label="Decrease quantity"
                     (click)="decreaseQuantity(item.product.id, item.quantity)"
+                    [disabled]="item.quantity == 0"
                   >
                     −
                   </button>
@@ -63,9 +65,11 @@
                   </span>
 
                   <button
+                    class="quantity-control-btn"
                     type="button"
                     aria-label="Increase quantity"
                     (click)="increaseQuantity(item.product.id, item.quantity)"
+                    [disabled]="item.quantity >= 15"
                   >
                     +
                   </button>

@@ -73,7 +73,12 @@
                 −
               </button>
               <span class="quantity-display">{{ quantity() }}</span>
-              <button type="button" (click)="increaseQuantity()" aria-label="Increase quantity">
+              <button
+                type="button"
+                (click)="increaseQuantity()"
+                aria-label="Increase quantity"
+                [disabled]="quantity() >= 15"
+              >
                 +
               </button>
             </div>

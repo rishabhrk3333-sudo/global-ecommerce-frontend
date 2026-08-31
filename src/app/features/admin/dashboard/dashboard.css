@@ -5,8 +5,6 @@
   box-sizing: border-box;
 }
 
-/* Statistics */
-
 .stats-grid {
   display: grid;
 
@@ -55,8 +53,6 @@
   font-size: 11px;
 }
 
-/* Dashboard Section */
-
 .dashboard-section {
   margin-top: 1.5rem;
 
@@ -96,8 +92,6 @@
 
   font-size: 12px;
 }
-
-/* Quick Actions */
 
 .action-grid {
   display: grid;
@@ -147,8 +141,6 @@
   font-size: 12px;
 }
 
-/* View All */
-
 .view-all {
   color: var(--color-primary);
 
@@ -158,8 +150,6 @@
 
   text-decoration: none;
 }
-
-/* Empty Orders */
 
 .empty-orders {
   padding: 2rem;
@@ -174,8 +164,6 @@
 
   font-size: 13px;
 }
-
-/* Responsive */
 
 @media (max-width: 900px) {
   .stats-grid {

@@ -51,7 +51,9 @@
     </div>
   </div>
 
-  @if (filteredProducts().length > 0) {
+  @if (isLoading() == true && isError() == false) {
+    <app-loader></app-loader>
+  } @else if (filteredProducts().length > 0 && isLoading() == false) {
     <div class="products-grid">
       @for (product of filteredProducts(); track product.id) {
         <div class="product-card">
@@ -87,7 +89,7 @@
         </div>
       }
     </div>
-  } @else {
+  } @else if (isLoading() == false && isError() == true) {
     <app-empty-state></app-empty-state>
   }
 </section>

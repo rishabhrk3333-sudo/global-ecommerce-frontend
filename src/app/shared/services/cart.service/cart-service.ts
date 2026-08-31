@@ -7,11 +7,9 @@ import { Product } from '../../../core/models/product.model';
 })
 export class CartService {
   private readonly storageKey = 'ecommerce-cart';
-
   private readonly cartItems = signal<CartItem[]>(this.loadCart());
-
   readonly items = this.cartItems.asReadonly();
-
+  private readonly MAX_ITEM_QUANTITY = 15;
   readonly itemCount = computed(() =>
     this.cartItems().reduce((total, item) => total + item.quantity, 0),
   );
@@ -23,25 +21,26 @@ export class CartService {
   addToCart(product: Product, quantity = 1): void {
     this.cartItems.update((items) => {
       const existingItem = items.find((item) => item.product.id === product.id);
-
       if (existingItem) {
         return items.map((item) =>
           item.product.id === product.id
             ? {
                 ...item,
-                quantity: item.quantity + quantity,
+                quantity: Math.min(item.quantity + quantity, this.MAX_ITEM_QUANTITY),
               }
             : item,
         );
       }
+
       return [
         ...items,
         {
           product,
-          quantity,
+          quantity: Math.min(quantity, this.MAX_ITEM_QUANTITY),
         },
       ];
     });
+
     this.saveCart();
   }
 
