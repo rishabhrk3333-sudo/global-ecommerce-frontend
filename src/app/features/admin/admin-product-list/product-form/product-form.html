@@ -76,12 +76,7 @@
     <!-- Image -->
     <div class="form-field">
       <label for="image"> Image URL * </label>
-      <input
-        id="image"
-        type="url"
-        formControlName="image"
-        placeholder="https://example.com/image.jpg"
-      />
+      <input id="image" type="url" formControlName="image" placeholder="Add image url ..." />
       @if (productForm.controls.image.touched && productForm.controls.image.invalid) {
         <span class="error-message"> Please enter a valid image URL. </span>
       }
