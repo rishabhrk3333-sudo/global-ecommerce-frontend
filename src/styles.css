@@ -403,7 +403,6 @@ select:focus {
   background: var(--color-primary-hover);
 }
 
-/* Tablet and small laptops */
 @media (max-width: 1024px) {
   .page-heading {
     font-size: 17px;
@@ -418,7 +417,6 @@ select:focus {
   }
 }
 
-/* Tablets and large phones */
 @media (max-width: 768px) {
   .page-header {
     width: 100%;
@@ -441,7 +439,6 @@ select:focus {
   }
 }
 
-/* Mobile phones */
 @media (max-width: 480px) {
   .page-header {
     margin: 6px 0px;
