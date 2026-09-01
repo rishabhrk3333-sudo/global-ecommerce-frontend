@@ -49,19 +49,17 @@ export class Checkout {
   continueToPayment(): void {
     if (this.checkoutForm.invalid) {
       this.checkoutForm.markAllAsTouched();
-
       return;
     }
-
     if (this.cartService.items().length === 0) {
+      alert('Your cart is empty. Please add a product before continuing.');
       this.router.navigate(['/cart']);
-
       return;
     }
-
-    console.log('Checkout details:', this.checkoutForm.getRawValue());
-
-    // Payment step will be implemented next.
+    // console.log('Checkout details:', this.checkoutForm.getRawValue());
+    alert(
+      'Your order request has been received successfully. We’ll contact you shortly with the next steps.',
+    );
     this.router.navigate(['/checkout/payment']);
   }
 

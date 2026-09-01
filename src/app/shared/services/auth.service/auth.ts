@@ -8,23 +8,17 @@ import { User } from '../../../core/models/user.model';
 })
 export class AuthService {
   private readonly http = inject(HttpClient);
-
   private readonly storageKey = 'shopSphereUser';
   private readonly usersUrl = 'assets/data/users.json';
-
   private readonly currentUserSignal = signal<User | null>(this.getStoredUser());
-
   readonly currentUser = this.currentUserSignal.asReadonly();
-
   readonly isLoggedIn = computed(() => this.currentUserSignal() !== null);
 
   private getStoredUser(): User | null {
     const storedUser = sessionStorage.getItem(this.storageKey);
-
     if (!storedUser) {
       return null;
     }
-
     try {
       return JSON.parse(storedUser) as User;
     } catch {
@@ -37,7 +31,6 @@ export class AuthService {
     return this.http.get<User[]>(this.usersUrl).pipe(
       map((users) => {
         const user = users.find((user) => user.email === email && user.password === password);
-
         if (!user) {
           return false;
         }
@@ -51,9 +44,7 @@ export class AuthService {
         };
 
         this.currentUserSignal.set(authUser);
-
         sessionStorage.setItem(this.storageKey, JSON.stringify(authUser));
-
         return true;
       }),
     );
