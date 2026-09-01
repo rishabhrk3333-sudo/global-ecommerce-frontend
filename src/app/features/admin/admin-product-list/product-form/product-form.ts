@@ -29,7 +29,7 @@ export class ProductForm implements OnChanges {
 
   readonly productForm = this.fb.nonNullable.group({
     name: ['', [Validators.required, Validators.minLength(3)]],
-    description: ['', [Validators.required, Validators.minLength(100)]],
+    description: ['', [Validators.required, Validators.minLength(10)]],
     price: [0, Validators.required],
     category: ['', Validators.required],
     image: ['', [Validators.required, Validators.pattern(/^https?:\/\/.+/)]],

@@ -33,6 +33,10 @@ export class AdminProductList {
   }
 
   onDelete(id: number): void {
-    this.productService.deleteProduct(id);
+    const confirmed = confirm('Are you sure you want to delete this product?');
+    if (confirmed) {
+      this.productService.deleteProduct(id);
+      this.loadProducts();
+    }
   }
 }

@@ -41,7 +41,14 @@
     "id": "ORD-1003",
     "userId": 1,
     "date": "2026-08-30",
-    "items": [],
+    "items": [
+      {
+        "productId": 2,
+        "productName": "Smart Watch",
+        "quantity": 1,
+        "price": 7999
+      }
+    ],
     "subtotal": 7999,
     "shipping": 0,
     "total": 7999,

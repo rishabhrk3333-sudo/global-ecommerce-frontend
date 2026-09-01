@@ -56,7 +56,9 @@
                     Edit
                   </a>
 
-                  <button type="button" class="action-button delete">Delete</button>
+                  <button type="button" (click)="onDelete(product.id)" class="action-button delete">
+                    Delete
+                  </button>
                 </div>
               </td>
             </tr>
